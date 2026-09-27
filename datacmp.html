@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ch_cn">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>历史数据对比</title>
+        <!--favicon-->
+        <link rel="icon" href="static/admin/assets/images/favicon-32x32.png" type="image/png" />
+        <!-- Vector CSS -->
+        <link href="static/admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+        <!--plugins-->
+        <link href="static/admin/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+        <link href="static/admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+        <link href="static/admin/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+        <!-- loader-->
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="static/admin/assets/css/bootstrap.min.css" />
+        <!-- Icons CSS -->
+        <link rel="stylesheet" href="static/admin/assets/css/icons.css" />
+        <!-- App CSS -->
+        <link rel="stylesheet" href="static/admin/assets/css/app.css" />
+    </head>
+
+    <body class="bg-theme bg-theme1">
+        <div class="wrapper">
+            <!--header-->
+<header class="top-header">
+    <nav class="navbar navbar-expand">
+        <div class="left-topbar d-flex align-items-center">
+            <a href="javascript:;" class="toggle-btn">	<i class="bx bx-menu"></i>
+            </a>
+        </div>
+        <div class="flex-grow-1 search-bar" style="display: none;">
+            <div class="input-group">
+                <div class="input-group-prepend search-arrow-back">
+                    <button class="btn btn-search-back" type="button"><i class="bx bx-arrow-back"></i>
+                    </button>
+                </div>
+                <input type="text" class="form-control" placeholder="search" />
+                <div class="input-group-append">
+                    <button class="btn btn-search" type="button"><i class="lni lni-search-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="right-topbar ml-auto">
+            <ul class="navbar-nav">
+                <li class="nav-item search-btn-mobile" style="display: none;">
+                    <a class="nav-link position-relative" href="javascript:;">	<i class="bx bx-search vertical-align-middle"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown dropdown-lg" style="display: none;">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="javascript:;" data-toggle="dropdown">	<span class="msg-count">6</span>
+                        <i class="bx bx-comment-detail vertical-align-middle"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="javascript:;">
+                            <div class="msg-header">
+                                <h6 class="msg-header-title">6 New</h6>
+                                <p class="msg-header-subtitle">Application Messages</p>
+                            </div>
+                        </a>
+                        <div class="header-message-list">
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-1.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Daisy Anderson <span class="msg-time float-right">5 sec
+                                            ago</span></h6>
+                                        <p class="msg-info">The standard chunk of lorem</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-2.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Althea Cabardo <span class="msg-time float-right">14
+                                            sec ago</span></h6>
+                                        <p class="msg-info">Many desktop publishing packages</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-3.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Oscar Garner <span class="msg-time float-right">8 min
+                                            ago</span></h6>
+                                        <p class="msg-info">Various versions have evolved over</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-4.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Katherine Pechon <span class="msg-time float-right">15
+                                            min ago</span></h6>
+                                        <p class="msg-info">Making this the first true generator</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-5.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Amelia Doe <span class="msg-time float-right">22 min
+                                            ago</span></h6>
+                                        <p class="msg-info">Duis aute irure dolor in reprehenderit</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-6.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Cristina Jhons <span class="msg-time float-right">2 hrs
+                                            ago</span></h6>
+                                        <p class="msg-info">The passage is attributed to an unknown</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-7.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">James Caviness <span class="msg-time float-right">4 hrs
+                                            ago</span></h6>
+                                        <p class="msg-info">The point of using Lorem</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-8.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Peter Costanzo <span class="msg-time float-right">6 hrs
+                                            ago</span></h6>
+                                        <p class="msg-info">It was popularised in the 1960s</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-9.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">David Buckley <span class="msg-time float-right">2 hrs
+                                            ago</span></h6>
+                                        <p class="msg-info">Various versions have evolved over</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-10.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Thomas Wheeler <span class="msg-time float-right">2 days
+                                            ago</span></h6>
+                                        <p class="msg-info">If you are going to use a passage</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-11.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Johnny Seitz <span class="msg-time float-right">5 days
+                                            ago</span></h6>
+                                        <p class="msg-info">All the Lorem Ipsum generators</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <a href="javascript:;">
+                            <div class="text-center msg-footer">View All Messages</div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown dropdown-lg" style="display: none;">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="javascript:;" data-toggle="dropdown">	<i class="bx bx-bell vertical-align-middle"></i>
+                        <span class="msg-count">8</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="javascript:;">
+                            <div class="msg-header">
+                                <h6 class="msg-header-title">8 New</h6>
+                                <p class="msg-header-subtitle">Application Notifications</p>
+                            </div>
+                        </a>
+                        <div class="header-notifications-list">
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-primary text-primary"><i class="bx bx-group"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">New Customers<span class="msg-time float-right">14 Sec
+                                            ago</span></h6>
+                                        <p class="msg-info">5 new user registered</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-danger text-danger"><i class="bx bx-cart-alt"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">New Orders <span class="msg-time float-right">2 min
+                                            ago</span></h6>
+                                        <p class="msg-info">You have recived new orders</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-shineblue text-shineblue"><i class="bx bx-file"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">24 PDF File<span class="msg-time float-right">19 min
+                                            ago</span></h6>
+                                        <p class="msg-info">The pdf files generated</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-cyne text-cyne"><i class="bx bx-send"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Time Response <span class="msg-time float-right">28 min
+                                            ago</span></h6>
+                                        <p class="msg-info">5.1 min avarage time response</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-purple text-purple"><i class="bx bx-home-circle"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">New Product Approved <span
+                                            class="msg-time float-right">2 hrs ago</span></h6>
+                                        <p class="msg-info">Your new product has approved</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-warning text-warning"><i class="bx bx-message-detail"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">New Comments <span class="msg-time float-right">4 hrs
+                                            ago</span></h6>
+                                        <p class="msg-info">New customer comments recived</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-success text-success"><i class='bx bx-check-square'></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Your item is shipped <span class="msg-time float-right">5 hrs
+                                            ago</span></h6>
+                                        <p class="msg-info">Successfully shipped your item</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-sinata text-sinata"><i class='bx bx-user-pin'></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">New 24 authors<span class="msg-time float-right">1 day
+                                            ago</span></h6>
+                                        <p class="msg-info">24 new authors joined last week</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-mehandi text-mehandi"><i class='bx bx-door-open'></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Defense Alerts <span class="msg-time float-right">2 weeks
+                                            ago</span></h6>
+                                        <p class="msg-info">45% less alerts last 4 weeks</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <a href="javascript:;">
+                            <div class="text-center msg-footer">View All Notifications</div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown dropdown-user-profile">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-toggle="dropdown">
+                        <div class="media user-box align-items-center">
+                            <div class="media-body user-info">
+                                <p class="user-name mb-0">Admin</p>
+                                <p class="designattion mb-0">系统管理员</p>
+                            </div>
+                            <img src="static/admin/assets/img/face.png" class="user-img" alt="user avatar">
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">	
+                        <a class="dropdown-item" href="javascript:;"><i
+                                class="bx bx-cog"></i><span>账号设置</span></a>
+                        <div class="dropdown-divider mb-0"></div>	<a class="dropdown-item" href="javascript:;"><i
+                                class="bx bx-power-off"></i><span>登出</span></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown dropdown-language" style="display: none;">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-toggle="dropdown">
+                        <div class="lang d-flex">
+                            <div><i class="flag-icon flag-icon-cn"></i>
+                            </div>
+                            <div><span>Chinese</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">	<a class="dropdown-item" href="javascript:;"><i
+                                class="flag-icon flag-icon-de"></i><span>German</span></a>
+                        <a class="dropdown-item" href="javascript:;"><i
+                                class="flag-icon flag-icon-fr"></i><span>French</span></a>
+                        <a class="dropdown-item" href="javascript:;"><i
+                                class="flag-icon flag-icon-um"></i><span>English</span></a>
+                        <a class="dropdown-item" href="javascript:;"><i
+                                class="flag-icon flag-icon-in"></i><span>Hindi</span></a>
+                        <a class="dropdown-item" href="javascript:;"><i
+                                class="flag-icon flag-icon-cn"></i><span>Chinese</span></a>
+                        <a class="dropdown-item" href="javascript:;"><i
+                                class="flag-icon flag-icon-ae"></i><span>Arabic</span></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!--end header-->
+            <!--sidebar-wrapper-->
+<div class="sidebar-wrapper" data-simplebar="true">
+    <div class="sidebar-header">
+        <div class="">
+            <img src="static/admin/hcmlogo.png" class="logo-icon-2" alt="" />
+        </div>
+        <div>
+            <h4 class="logo-text">南洲大桥</h4>
+            <h4 class="logo-text">在线索力监测</h4>
+        </div>
+        <a href="javascript:;" class="toggle-btn ml-auto"> <i class="bx bx-menu"></i>
+        </a>
+    </div>
+    <!--navigation-->
+    <ul class="metismenu" id="menu">
+        <li>
+            <a href="/">
+                <div class="parent-icon"><i class="bx bx-home-alt"></i>
+                </div>
+                <div class="menu-title">主页</div>
+            </a>
+        </li>
+        <li class="menu-label">传感器管理</li>
+        <li>
+            <a href="/">
+                <div class="parent-icon"><i class="bx bx-envelope"></i>
+                </div>
+                <div class="menu-title">传感器列表</div>
+            </a>
+        </li>
+        <li>
+            <a href="datacmp.html">
+                <div class="parent-icon"> <i class="bx bx-conversation"></i>
+                </div>
+                <div class="menu-title">索力数据对比</div>
+            </a>
+        </li>    
+        <li>
+            <a href="datacmp_freq.html">
+                <div class="parent-icon"> <i class="bx bx-conversation"></i>
+                </div>
+                <div class="menu-title">基频数据对比</div>
+            </a>
+        </li>  
+    </ul>
+    <!--end navigation-->
+</div>
+<!--end sidebar-wrapper-->
+            <div class="page-wrapper">
+                <div class="page-content-wrapper">
+                    <div class="page-content">
+                        <div class="card radius-15">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h5>历史索力数据对比</h5>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-md-4 col-lg-2">
+                                                <button type="button" class="btn btn-outline-light" style="width: 100%;">起始时间</button>
+                                            </div>
+                                            <div class="col-md-8 col-lg-4">
+                                                <input type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime" id="bgTime" value="2026-04-01T00:00">
+                                            </div>
+                                            <div class="col-md-4 col-lg-2">
+                                                <button type="button" class="btn btn-outline-light" style="width: 100%;">结束时间</button>
+                                            </div>
+                                            <div class="col-md-8 col-lg-4">
+                                                <input type="datetime-local" class="form-control" placeholder="结束时间" name="endTime" id="endTime" value="2026-09-28T00:00">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 style="opacity: 0;">-</h5>
+                                    <div class="col-12">
+                                        <div class="row">
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s01 onclick="onclickDraw('s01', '上游A9')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游A9</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s02 onclick="onclickDraw('s02', '上游A10')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游A10</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s03 onclick="onclickDraw('s03', '上游A11')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游A11</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s04 onclick="onclickDraw('s04', '上游A12')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游A12</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s05 onclick="onclickDraw('s05', '上游A5')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游A5</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s06 onclick="onclickDraw('s06', '上游A6')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游A6</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s07 onclick="onclickDraw('s07', '上游A7')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游A7</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s08 onclick="onclickDraw('s08', '上游A8')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游A8</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s09 onclick="onclickDraw('s09', '上游A1')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游A1</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s10 onclick="onclickDraw('s10', '上游A2')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游A2</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s11 onclick="onclickDraw('s11', '上游A3')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游A3</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s12 onclick="onclickDraw('s12', '上游A4')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游A4</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s13 onclick="onclickDraw('s13', '上游J1')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游J1</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s14 onclick="onclickDraw('s14', '上游J2')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游J2</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s15 onclick="onclickDraw('s15', '上游J3')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游J3</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s16 onclick="onclickDraw('s16', '上游J4')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游J4</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s17 onclick="onclickDraw('s17', '上游J5')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游J5</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s18 onclick="onclickDraw('s18', '上游J6')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游J6</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s19 onclick="onclickDraw('s19', '上游J7')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游J7</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s20 onclick="onclickDraw('s20', '上游J8')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游J8</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s21 onclick="onclickDraw('s21', '上游J9')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游J9</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s22 onclick="onclickDraw('s22', '上游J10')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游J10</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s23 onclick="onclickDraw('s23', '上游J11')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游J11</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s24 onclick="onclickDraw('s24', '上游J12')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">上游J12</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s25 onclick="onclickDraw('s25', '下游A9')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游A9</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s26 onclick="onclickDraw('s26', '下游A10')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游A10</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s27 onclick="onclickDraw('s27', '下游A11')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游A11</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s28 onclick="onclickDraw('s28', '下游A12')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游A12</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s29 onclick="onclickDraw('s29', '下游A5')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游A5</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s30 onclick="onclickDraw('s30', '下游A6')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游A6</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s31 onclick="onclickDraw('s31', '下游A7')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游A7</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s32 onclick="onclickDraw('s32', '下游A8')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游A8</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s33 onclick="onclickDraw('s33', '下游A1')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游A1</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s34 onclick="onclickDraw('s34', '下游A2')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游A2</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s35 onclick="onclickDraw('s35', '下游A3')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游A3</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s36 onclick="onclickDraw('s36', '下游A4')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游A4</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s37 onclick="onclickDraw('s37', '下游J4')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游J4</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s38 onclick="onclickDraw('s38', '下游J3')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游J3</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s39 onclick="onclickDraw('s39', '下游J2')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游J2</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s40 onclick="onclickDraw('s40', '下游J1')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游J1</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s41 onclick="onclickDraw('s41', '下游J8')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游J8</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s42 onclick="onclickDraw('s42', '下游J7')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游J7</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s43 onclick="onclickDraw('s43', '下游J6')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游J6</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s44 onclick="onclickDraw('s44', '下游J5')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游J5</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s45 onclick="onclickDraw('s45', '下游J12')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游J12</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s46 onclick="onclickDraw('s46', '下游J11')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游J11</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s47 onclick="onclickDraw('s47', '下游J10')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游J10</p>
+                                                    </div>
+                                                </div>
+                                                                                            <div class="col-md-3 col-6">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="checkbox" id=s48 onclick="onclickDraw('s48', '下游J9')">
+                                                        <i class="bx bxs-send mr-3 font-20"></i>
+                                                        <p class="mb-0">下游J9</p>
+                                                    </div>
+                                                </div>
+                                                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card radius-15">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div id="chart" style="height:500px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="static/admin/assets/js/jquery.min.js"></script>
+	<script src="static/admin/assets/js/popper.min.js"></script>
+	<script src="static/admin/assets/js/bootstrap.min.js"></script>
+    <script src="static/admin/assets/echarts.min.js"></script>
+	<!-- Vector map JavaScript -->
+	<script src="static/admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+	<script src="static/admin/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="static/admin/assets/plugins/vectormap/jquery-jvectormap-in-mill.js"></script>
+	<script src="static/admin/assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
+	<script src="static/admin/assets/plugins/vectormap/jquery-jvectormap-uk-mill-en.js"></script>
+	<script src="static/admin/assets/plugins/vectormap/jquery-jvectormap-au-mill.js"></script>
+	<script src="static/admin/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <!--plugins-->
+	<script src="static/admin/assets/plugins/simplebar/js/simplebar.min.js"></script>
+	<script src="static/admin/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+	<script src="static/admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="static/admin/assets/js/app.js"></script>
+    <!-- <script type="text/javascript">
+        $(function() {
+            $('#menu').metisMenu(); // ul.nav#side-menu
+        })
+    </script> -->
+    </body>
+    <!-- 自定义脚本由此开始 -->
+    <script type="text/javascript">
+        var chart = echarts.init(document.getElementById("chart"));
+        var stdForce=100;
+        var option = {
+    textStyle: { // 全局字体样式
+        color: '#fff'
+    },
+    dataZoom: [
+        {
+            type: 'slider',//数据滑块
+            start: 0,
+            minSpan: 8,    //5min
+            // 调整 dataZoom 位置到 toolbox 上方
+            bottom: '10%',  // 距离底部5%，给 toolbox 留出空间
+            height: 20,    // 减小滑块高度
+            dataBackground: {
+                lineStyle: {
+                    color: '#95BC2F'
+                },
+                areaStyle: {
+                    color: '#95BC2F',
+                    opacity: 1,
+                }
+            },
+            handleStyle: {
+                color: '#fff' // 滑块手柄颜色
+            },
+            labelStyle: {
+                color: '#fff' // 滑块标签颜色
+            }
+        },
+        {
+            type: 'inside'//使鼠标在图表中时滚轮可用
+        }
+    ],
+    grid: {
+        left: '1%',      
+        right: '1%',     
+        bottom: '15%',   // 增加底部边距，为 dataZoom 和 toolbox 留出空间
+        containLabel: true 
+    },
+    tooltip: { 
+        trigger: 'axis',
+        formatter: function (params) {
+            var result = params[0].axisValue;
+            params.forEach(function (item) {
+                result += '<br/>';
+                result += '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' + item.color + '"></span>';
+                result += item.seriesName + "：";
+                result += isNaN(item.value) ? 0 : item.value;
+                var dw = "kN";
+                result +=dw;
+            });
+            return result;
+        },
+    },
+    toolbox: {
+        show: true,
+        left: 'center',    
+        bottom: '0%',      // toolbox 保持在最底部
+        itemSize: 15,      // 减小 toolbox 图标大小
+        iconStyle: {
+            normal: {
+                color: '#fff' 
+            },
+            emphasis: {
+                color: '#fff' 
+            }
+        },
+        feature: {
+            dataZoom: { show: true },
+            mark: { show: true },
+            dataView: { 
+                show: true, 
+                readOnly: false,
+                textStyle: {
+                    color: '#000' 
+                }
+            },
+            magicType: { show: true, type: ['line', 'bar'] },
+            restore: { show: true },
+            saveAsImage: { show: true }
+        }
+    },
+    legend: {
+        data: [],
+        textStyle:{
+            color: "#fff",
+        }
+    },
+    xAxis: [{
+        data: [],
+        axisLine: {
+            lineStyle: {
+                color: '#fff' 
+            }
+        },
+        axisLabel: {
+            color: '#fff' 
+        },
+        axisTick: {
+            lineStyle: {
+                color: '#fff' 
+            }
+        }
+    }],
+    yAxis: [
+        {
+            name: '数值',
+            nameTextStyle: {
+                color: '#fff' 
+            },
+            type: 'value',
+            max:1,
+            min:10000000,
+            scale: true,
+            axisLine: {
+                lineStyle: {
+                    color: '#fff' 
+                }
+            },
+            axisLabel: {
+                color: '#fff', 
+                formatter: function(value) {
+                    return Math.round(value);
+                }
+            },
+            axisTick: {
+                lineStyle: {
+                    color: '#fff' 
+                }
+            },
+            splitLine: {
+                lineStyle: {
+                    color: 'rgba(255,255,255,0.3)' 
+                }
+            }
+        },
+    ],
+    series: [
+        {
+            name: '数值',
+            type: 'line',
+            data: []
+        }
+    ]
+};
+        chart.setOption(option);
+        window.onresize = chart.resize;
+    // window.onresize = function () {
+    //         chart.resize();
+    //     }
+    
+    </script>
+    <script type="text/javascript">
+        var sensor = [{"id":1,"id_sensor":"s01","content":"\u4e0a\u6e38A9","x1":11.47,"y1":33.92483076296918,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":58.13,"ind":9},{"id":2,"id_sensor":"s02","content":"\u4e0a\u6e38A10","x1":11.47,"y1":35.7,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":59.28,"ind":10},{"id":3,"id_sensor":"s03","content":"\u4e0a\u6e38A11","x1":11.47,"y1":37,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":60.42,"ind":11},{"id":4,"id_sensor":"s04","content":"\u4e0a\u6e38A12","x1":11.47,"y1":38.548771172828,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":61.56,"ind":12},{"id":5,"id_sensor":"s05","content":"\u4e0a\u6e38A5","x1":11.47,"y1":27.84619911284354,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":53.38,"ind":5},{"id":6,"id_sensor":"s06","content":"\u4e0a\u6e38A6","x1":11.47,"y1":29.350811312638957,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":54.72,"ind":6},{"id":7,"id_sensor":"s07","content":"\u4e0a\u6e38A7","x1":11.47,"y1":30.88581364959031,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":55.86,"ind":7},{"id":8,"id_sensor":"s08","content":"\u4e0a\u6e38A8","x1":11.47,"y1":32.407626571939744,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":57,"ind":8},{"id":9,"id_sensor":"s09","content":"\u4e0a\u6e38A1","x1":11.47,"y1":21.78041104134483,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":49.02,"ind":1},{"id":10,"id_sensor":"s10","content":"\u4e0a\u6e38A2","x1":11.47,"y1":23.297791476193257,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":50.16,"ind":2},{"id":11,"id_sensor":"s11","content":"\u4e0a\u6e38A3","x1":11.47,"y1":24.80328310019483,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":51.3,"ind":3},{"id":12,"id_sensor":"s12","content":"\u4e0a\u6e38A4","x1":11.47,"y1":26.349677984849176,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":52.44,"ind":4},{"id":13,"id_sensor":"s13","content":"\u4e0a\u6e38J1","x1":11.47,"y1":23.382236972760985,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-61.33,"ind":13},{"id":14,"id_sensor":"s14","content":"\u4e0a\u6e38J2","x1":11.47,"y1":24.91224182982105,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-64.67,"ind":14},{"id":15,"id_sensor":"s15","content":"\u4e0a\u6e38J3","x1":11.47,"y1":26.42576469474754,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-68.01,"ind":15},{"id":16,"id_sensor":"s16","content":"\u4e0a\u6e38J4","x1":11.47,"y1":27.956953820845317,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-71.35,"ind":16},{"id":17,"id_sensor":"s17","content":"\u4e0a\u6e38J5","x1":11.47,"y1":29.46549850507506,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-74.69,"ind":17},{"id":18,"id_sensor":"s18","content":"\u4e0a\u6e38J6","x1":11.47,"y1":30.997424711238715,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-78.03,"ind":18},{"id":19,"id_sensor":"s19","content":"\u4e0a\u6e38J7","x1":11.47,"y1":33.22440039421676,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-81.37,"ind":19},{"id":20,"id_sensor":"s20","content":"\u4e0a\u6e38J8","x1":11.47,"y1":34.75373143808783,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-84.71,"ind":20},{"id":21,"id_sensor":"s21","content":"\u4e0a\u6e38J9","x1":11.47,"y1":36.25504965538272,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-88.05,"ind":21},{"id":22,"id_sensor":"s22","content":"\u4e0a\u6e38J10","x1":11.47,"y1":37.76807580199575,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-91.39,"ind":22},{"id":23,"id_sensor":"s23","content":"\u4e0a\u6e38J11","x1":11.47,"y1":39.27801867893636,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-94.73,"ind":23},{"id":24,"id_sensor":"s24","content":"\u4e0a\u6e38J12","x1":11.47,"y1":40.82093809257101,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-98.07,"ind":24},{"id":25,"id_sensor":"s25","content":"\u4e0b\u6e38A9","x1":-11.3,"y1":33.92483076296918,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":58.14,"ind":33},{"id":26,"id_sensor":"s26","content":"\u4e0b\u6e38A10","x1":-11.3,"y1":35.7,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":59.28,"ind":34},{"id":27,"id_sensor":"s27","content":"\u4e0b\u6e38A11","x1":-11.3,"y1":37,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":60.42,"ind":35},{"id":28,"id_sensor":"s28","content":"\u4e0b\u6e38A12","x1":-11.3,"y1":38.548771172828,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":61.56,"ind":36},{"id":29,"id_sensor":"s29","content":"\u4e0b\u6e38A5","x1":-11.3,"y1":27.84619911284354,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":53.38,"ind":29},{"id":30,"id_sensor":"s30","content":"\u4e0b\u6e38A6","x1":-11.3,"y1":29.350811312638957,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":54.72,"ind":30},{"id":31,"id_sensor":"s31","content":"\u4e0b\u6e38A7","x1":-11.3,"y1":30.88581364959031,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":55.86,"ind":31},{"id":32,"id_sensor":"s32","content":"\u4e0b\u6e38A8","x1":-11.3,"y1":32.407626571939744,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":57,"ind":32},{"id":33,"id_sensor":"s33","content":"\u4e0b\u6e38A1","x1":-11.3,"y1":21.78041104134483,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":49.02,"ind":25},{"id":34,"id_sensor":"s34","content":"\u4e0b\u6e38A2","x1":-11.3,"y1":23.297791476193257,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":50.16,"ind":26},{"id":35,"id_sensor":"s35","content":"\u4e0b\u6e38A3","x1":-11.3,"y1":24.80328310019483,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":51.3,"ind":27},{"id":36,"id_sensor":"s36","content":"\u4e0b\u6e38A4","x1":-11.3,"y1":26.349677984849176,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":52.44,"ind":28},{"id":37,"id_sensor":"s37","content":"\u4e0b\u6e38J4","x1":-11.3,"y1":27.956953820845317,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-71.35,"ind":40},{"id":38,"id_sensor":"s38","content":"\u4e0b\u6e38J3","x1":-11.3,"y1":26.42576469474754,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-68.01,"ind":39},{"id":39,"id_sensor":"s39","content":"\u4e0b\u6e38J2","x1":-11.3,"y1":24.91224182982105,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-64.67,"ind":38},{"id":40,"id_sensor":"s40","content":"\u4e0b\u6e38J1","x1":-11.3,"y1":23.382236972760985,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-61.33,"ind":37},{"id":41,"id_sensor":"s41","content":"\u4e0b\u6e38J8","x1":-11.3,"y1":34.75373143808783,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-84.71,"ind":44},{"id":42,"id_sensor":"s42","content":"\u4e0b\u6e38J7","x1":-11.3,"y1":33.22440039421676,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-81.37,"ind":43},{"id":43,"id_sensor":"s43","content":"\u4e0b\u6e38J6","x1":-11.3,"y1":30.997424711238715,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-78.03,"ind":42},{"id":44,"id_sensor":"s44","content":"\u4e0b\u6e38J5","x1":-11.3,"y1":29.46549850507506,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-74.69,"ind":41},{"id":45,"id_sensor":"s45","content":"\u4e0b\u6e38J12","x1":-11.3,"y1":40.82093809257101,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-98.07,"ind":48},{"id":46,"id_sensor":"s46","content":"\u4e0b\u6e38J11","x1":-11.3,"y1":39.27801867893636,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-94.73,"ind":47},{"id":47,"id_sensor":"s47","content":"\u4e0b\u6e38J10","x1":-11.3,"y1":37.76807580199575,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-91.39,"ind":46},{"id":48,"id_sensor":"s48","content":"\u4e0b\u6e38J9","x1":-11.3,"y1":36.25504965538272,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-88.05,"ind":45}];
+        function isNull(arg1) {
+            return !arg1 && arg1 !== 0 && typeof arg1 !== "boolean" ? true : false;
+        }
+        function checkDateTime(id_sensor) {
+            var bgT = document.getElementById("bgTime").value;
+            var enT = document.getElementById("endTime").value;
+            console.log(bgT + "bgTime" + id_sensor + "endTime" + enT);
+            if (isNull(bgT) || isNull(enT)) {
+                alert("起始、结束时间设置有误！");
+                return 0;
+            }
+    
+            if (bgT == enT) {
+                alert("起始、结束时间设置有误！");
+                return 0;
+            }
+            return 1;
+        }
+        function randomHexColor() { //随机生成十六进制颜色
+            var hex = Math.floor(Math.random() * 16777216).toString(16); //生成ffffff以内16进制数
+            while (hex.length < 6) { //while循环判断hex位数，少于6位前面加0凑够6位
+                hex = '0' + hex;
+            }
+            return '#' + hex; //返回‘#'开头16进制颜色
+        }
+
+        function onclickDraw(id_sensor,id_content) {
+            if(document.getElementById(id_sensor).checked==false) {
+                for (i = 0; i < option.series.length; i++){
+                    if (option.series[i].name==id_content)
+                    {
+                        option.series.splice(i, 2);
+                    }
+                }
+                chart.setOption(option,true);
+                return;
+            }
+    
+            if (checkDateTime(id_sensor) != 0) {
+                var sensorIn = {
+                    "id_sensor": id_sensor,
+                    "bgTime": document.getElementById("bgTime").value,
+                    "endTime": document.getElementById("endTime").value
+                };
+                var urll = "api/wavehistory_" + sensorIn.id_sensor + ".json";
+                // console.log(sensorIn );
+                $.ajax({
+                    type: "GET",
+                    url: urll,
+                    data: sensorIn,
+                    dataType: "json",
+                    success: function (data) {
+                        var count = Object.keys(data).length;
+                        console.log("count:" + count);
+                        // console.log(data);
+                        var dataObject = jQuery.parseJSON(typeof data === "string" ? data : JSON.stringify(data));
+                        console.log(dataObject.id_content);
+                        var randColor=randomHexColor();
+                        var randColor;
+                        randColor=randomHexColor();
+                                //option.xAxis.data.push(dataObject.date[i].utctime);
+                                var item = {
+                                    name: dataObject.id_content,
+                                    type: 'line',
+                                    data: dataObject.data,
+                                    lineStyle: {
+                                        normal: {
+                                            // color: randColor
+                                        }
+                                    },
+                                    markPoint: {
+                                        data: [
+                                            { type: 'max', name: '最大值' },
+                                            { type: 'min', name: '最小值' }
+                                        ],
+                                        itemStyle:{
+                                            //  color:randColor
+                                            normal:{
+                                                label:{
+                                                    color: "#ffffff",
+                                                }
+                                            }
+                                        },
+                                    },
+                                    markLine: {
+                                        data: [
+                                            { type: 'average', name: '平均值' }
+                                        ],
+                                        lineStyle:{
+                                            //  color:randColor
+                                        }
+                                    }
+                                };
+                                stdForce=dataObject.std_Force;
+                                //console.log(randomHexColor);
+                                option.legend.data.push(dataObject.id_content);
+                                option.series.push(item);
+                                var stdForceMax=stdForce*1.1;
+                                var stdForceMin=stdForce*0.9;
+                                console.log(stdForceMax);
+                                //var stdForceMax=500;
+                                //var stdForceMin=-500;
+                                if(option.series.length<=1){
+                                option.yAxis[0].max=stdForceMax;
+                                option.yAxis[0].min=stdForceMin;
+                                }else{
+                                if(option.yAxis[0].max<stdForceMax)
+                                option.yAxis[0].max=stdForceMax;
+                                if(option.yAxis[0].min>stdForceMin)
+                                option.yAxis[0].min=stdForceMin;
+                                }
+                                if (dataObject.date.length > option.xAxis[0].data.length)
+                                    option.xAxis[0].data = dataObject.date;
+                                //console.log(dataObject.date);
+                                chart.setOption(option);
+                  }
+                });
+            }
+    
+            // console.log("表单的");
+        }
+    </script>
+    <script type="text/javascript">
+    var bgList = document.getElementsByName("bgTime");
+    for(var i=0;i<bgList.length;i++){
+    bgList[i].value=getDateNowPre(7);
+    }
+    var endList = document.getElementsByName("endTime");
+    for(var i=0;i<bgList.length;i++){
+    endList[i].value=getDateNowPre(0);
+    }
+    
+    function getDateNowPre(daysPre)
+    {
+    var d = new Date(new Date()-daysPre*24*60*60*1000);
+    var dMonth=d.getMonth()+1;
+    var dM=(dMonth<10)?'0'+dMonth:dMonth;
+    var dDay=(d.getDate()<10)?'0'+d.getDate():d.getDate();
+    var dHour=(d.getHours()<10)?'0'+d.getHours():d.getHours();
+    var dMinut=(d.getMinutes()<10)?'0'+d.getMinutes():d.getMinutes();
+    
+    var _time = d.getFullYear() + '-' +dM+ '-' + dDay+ 'T' + dHour + ':' + dMinut ;
+    return _time;
+    }
+    </script>
+</html>

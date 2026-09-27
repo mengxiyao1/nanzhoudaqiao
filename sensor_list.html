@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="ch_cn">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>传感器列表</title>
+        <!--favicon-->
+        <link rel="icon" href="static/admin/assets/images/favicon-32x32.png" type="image/png" />
+        <!-- Vector CSS -->
+        <link href="static/admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+        <!--plugins-->
+        <link href="static/admin/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+        <link href="static/admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+        <link href="static/admin/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+        <!-- loader-->
+        <link href="static/admin/assets/css/pace.min.css" rel="stylesheet" />
+        <script src="static/admin/assets/js/pace.min.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="static/admin/assets/css/bootstrap.min.css" />
+        <!-- Icons CSS -->
+        <link rel="stylesheet" href="static/admin/assets/css/icons.css" />
+        <!-- App CSS -->
+        <link rel="stylesheet" href="static/admin/assets/css/app.css" />
+    </head>
+
+    <body class="bg-theme bg-theme1">
+        <div class="wrapper">
+            <!--header-->
+<header class="top-header">
+    <nav class="navbar navbar-expand">
+        <div class="left-topbar d-flex align-items-center">
+            <a href="javascript:;" class="toggle-btn">	<i class="bx bx-menu"></i>
+            </a>
+        </div>
+        <div class="flex-grow-1 search-bar" style="display: none;">
+            <div class="input-group">
+                <div class="input-group-prepend search-arrow-back">
+                    <button class="btn btn-search-back" type="button"><i class="bx bx-arrow-back"></i>
+                    </button>
+                </div>
+                <input type="text" class="form-control" placeholder="search" />
+                <div class="input-group-append">
+                    <button class="btn btn-search" type="button"><i class="lni lni-search-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="right-topbar ml-auto">
+            <ul class="navbar-nav">
+                <li class="nav-item search-btn-mobile" style="display: none;">
+                    <a class="nav-link position-relative" href="javascript:;">	<i class="bx bx-search vertical-align-middle"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown dropdown-lg" style="display: none;">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="javascript:;" data-toggle="dropdown">	<span class="msg-count">6</span>
+                        <i class="bx bx-comment-detail vertical-align-middle"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="javascript:;">
+                            <div class="msg-header">
+                                <h6 class="msg-header-title">6 New</h6>
+                                <p class="msg-header-subtitle">Application Messages</p>
+                            </div>
+                        </a>
+                        <div class="header-message-list">
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-1.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Daisy Anderson <span class="msg-time float-right">5 sec
+                                            ago</span></h6>
+                                        <p class="msg-info">The standard chunk of lorem</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-2.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Althea Cabardo <span class="msg-time float-right">14
+                                            sec ago</span></h6>
+                                        <p class="msg-info">Many desktop publishing packages</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-3.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Oscar Garner <span class="msg-time float-right">8 min
+                                            ago</span></h6>
+                                        <p class="msg-info">Various versions have evolved over</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-4.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Katherine Pechon <span class="msg-time float-right">15
+                                            min ago</span></h6>
+                                        <p class="msg-info">Making this the first true generator</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-5.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Amelia Doe <span class="msg-time float-right">22 min
+                                            ago</span></h6>
+                                        <p class="msg-info">Duis aute irure dolor in reprehenderit</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-6.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Cristina Jhons <span class="msg-time float-right">2 hrs
+                                            ago</span></h6>
+                                        <p class="msg-info">The passage is attributed to an unknown</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-7.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">James Caviness <span class="msg-time float-right">4 hrs
+                                            ago</span></h6>
+                                        <p class="msg-info">The point of using Lorem</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-8.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Peter Costanzo <span class="msg-time float-right">6 hrs
+                                            ago</span></h6>
+                                        <p class="msg-info">It was popularised in the 1960s</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-9.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">David Buckley <span class="msg-time float-right">2 hrs
+                                            ago</span></h6>
+                                        <p class="msg-info">Various versions have evolved over</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-10.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Thomas Wheeler <span class="msg-time float-right">2 days
+                                            ago</span></h6>
+                                        <p class="msg-info">If you are going to use a passage</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="user-online">
+                                        <img src="static/admin/assets/images/avatars/avatar-11.png" class="msg-avatar" alt="user avatar">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Johnny Seitz <span class="msg-time float-right">5 days
+                                            ago</span></h6>
+                                        <p class="msg-info">All the Lorem Ipsum generators</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <a href="javascript:;">
+                            <div class="text-center msg-footer">View All Messages</div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown dropdown-lg" style="display: none;">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="javascript:;" data-toggle="dropdown">	<i class="bx bx-bell vertical-align-middle"></i>
+                        <span class="msg-count">8</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="javascript:;">
+                            <div class="msg-header">
+                                <h6 class="msg-header-title">8 New</h6>
+                                <p class="msg-header-subtitle">Application Notifications</p>
+                            </div>
+                        </a>
+                        <div class="header-notifications-list">
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-primary text-primary"><i class="bx bx-group"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">New Customers<span class="msg-time float-right">14 Sec
+                                            ago</span></h6>
+                                        <p class="msg-info">5 new user registered</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-danger text-danger"><i class="bx bx-cart-alt"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">New Orders <span class="msg-time float-right">2 min
+                                            ago</span></h6>
+                                        <p class="msg-info">You have recived new orders</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-shineblue text-shineblue"><i class="bx bx-file"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">24 PDF File<span class="msg-time float-right">19 min
+                                            ago</span></h6>
+                                        <p class="msg-info">The pdf files generated</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-cyne text-cyne"><i class="bx bx-send"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Time Response <span class="msg-time float-right">28 min
+                                            ago</span></h6>
+                                        <p class="msg-info">5.1 min avarage time response</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-purple text-purple"><i class="bx bx-home-circle"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">New Product Approved <span
+                                            class="msg-time float-right">2 hrs ago</span></h6>
+                                        <p class="msg-info">Your new product has approved</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-warning text-warning"><i class="bx bx-message-detail"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">New Comments <span class="msg-time float-right">4 hrs
+                                            ago</span></h6>
+                                        <p class="msg-info">New customer comments recived</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-success text-success"><i class='bx bx-check-square'></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Your item is shipped <span class="msg-time float-right">5 hrs
+                                            ago</span></h6>
+                                        <p class="msg-info">Successfully shipped your item</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-sinata text-sinata"><i class='bx bx-user-pin'></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">New 24 authors<span class="msg-time float-right">1 day
+                                            ago</span></h6>
+                                        <p class="msg-info">24 new authors joined last week</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item" href="javascript:;">
+                                <div class="media align-items-center">
+                                    <div class="notify bg-light-mehandi text-mehandi"><i class='bx bx-door-open'></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="msg-name">Defense Alerts <span class="msg-time float-right">2 weeks
+                                            ago</span></h6>
+                                        <p class="msg-info">45% less alerts last 4 weeks</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <a href="javascript:;">
+                            <div class="text-center msg-footer">View All Notifications</div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown dropdown-user-profile">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-toggle="dropdown">
+                        <div class="media user-box align-items-center">
+                            <div class="media-body user-info">
+                                <p class="user-name mb-0">Admin</p>
+                                <p class="designattion mb-0">系统管理员</p>
+                            </div>
+                            <img src="static/admin/assets/img/face.png" class="user-img" alt="user avatar">
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">	
+                        <a class="dropdown-item" href="javascript:;"><i
+                                class="bx bx-cog"></i><span>账号设置</span></a>
+                        <div class="dropdown-divider mb-0"></div>	<a class="dropdown-item" href="javascript:;"><i
+                                class="bx bx-power-off"></i><span>登出</span></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown dropdown-language" style="display: none;">
+                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-toggle="dropdown">
+                        <div class="lang d-flex">
+                            <div><i class="flag-icon flag-icon-cn"></i>
+                            </div>
+                            <div><span>Chinese</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">	<a class="dropdown-item" href="javascript:;"><i
+                                class="flag-icon flag-icon-de"></i><span>German</span></a>
+                        <a class="dropdown-item" href="javascript:;"><i
+                                class="flag-icon flag-icon-fr"></i><span>French</span></a>
+                        <a class="dropdown-item" href="javascript:;"><i
+                                class="flag-icon flag-icon-um"></i><span>English</span></a>
+                        <a class="dropdown-item" href="javascript:;"><i
+                                class="flag-icon flag-icon-in"></i><span>Hindi</span></a>
+                        <a class="dropdown-item" href="javascript:;"><i
+                                class="flag-icon flag-icon-cn"></i><span>Chinese</span></a>
+                        <a class="dropdown-item" href="javascript:;"><i
+                                class="flag-icon flag-icon-ae"></i><span>Arabic</span></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!--end header-->
+            <!--sidebar-wrapper-->
+<div class="sidebar-wrapper" data-simplebar="true">
+    <div class="sidebar-header">
+        <div class="">
+            <img src="static/admin/hcmlogo.png" class="logo-icon-2" alt="" />
+        </div>
+        <div>
+            <h4 class="logo-text">南洲大桥</h4>
+            <h4 class="logo-text">在线索力监测</h4>
+        </div>
+        <a href="javascript:;" class="toggle-btn ml-auto"> <i class="bx bx-menu"></i>
+        </a>
+    </div>
+    <!--navigation-->
+    <ul class="metismenu" id="menu">
+        <li>
+            <a href="/">
+                <div class="parent-icon"><i class="bx bx-home-alt"></i>
+                </div>
+                <div class="menu-title">主页</div>
+            </a>
+        </li>
+        <li class="menu-label">传感器管理</li>
+        <li>
+            <a href="/">
+                <div class="parent-icon"><i class="bx bx-envelope"></i>
+                </div>
+                <div class="menu-title">传感器列表</div>
+            </a>
+        </li>
+        <li>
+            <a href="datacmp.html">
+                <div class="parent-icon"> <i class="bx bx-conversation"></i>
+                </div>
+                <div class="menu-title">索力数据对比</div>
+            </a>
+        </li>    
+        <li>
+            <a href="datacmp_freq.html">
+                <div class="parent-icon"> <i class="bx bx-conversation"></i>
+                </div>
+                <div class="menu-title">基频数据对比</div>
+            </a>
+        </li>  
+    </ul>
+    <!--end navigation-->
+</div>
+<!--end sidebar-wrapper-->
+            <div class="page-wrapper">
+                <div class="page-content-wrapper">
+                    <div class="page-content">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h5>传感器列表</h5>
+                                </div>
+                                <hr>
+                                <table class="table table-borderless">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th width="8%" class="text-center">传感器编号</th>
+                                            <th >查看波形</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+    
+                                    <tbody>
+                                                                                <tr>
+                                            <form action="" id= 1 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游A9</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_1.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime1" id ="bgTime1" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime1" id="endTime1" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="1" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('1')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('1')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 2 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游A10</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_2.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime2" id ="bgTime2" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime2" id="endTime2" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="2" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('2')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('2')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 3 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游A11</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_3.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime3" id ="bgTime3" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime3" id="endTime3" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="3" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('3')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('3')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 4 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游A12</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_4.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime4" id ="bgTime4" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime4" id="endTime4" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="4" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('4')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('4')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 5 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游A5</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_5.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime5" id ="bgTime5" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime5" id="endTime5" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="5" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('5')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('5')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 6 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游A6</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_6.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime6" id ="bgTime6" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime6" id="endTime6" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="6" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('6')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('6')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 7 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游A7</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_7.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime7" id ="bgTime7" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime7" id="endTime7" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="7" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('7')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('7')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 8 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游A8</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_8.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime8" id ="bgTime8" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime8" id="endTime8" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="8" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('8')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('8')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 9 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游A1</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_9.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime9" id ="bgTime9" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime9" id="endTime9" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="9" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('9')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('9')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 10 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游A2</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_10.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime10" id ="bgTime10" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime10" id="endTime10" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="10" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('10')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('10')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 11 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游A3</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_11.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime11" id ="bgTime11" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime11" id="endTime11" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="11" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('11')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('11')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 12 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游A4</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_12.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime12" id ="bgTime12" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime12" id="endTime12" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="12" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('12')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('12')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 13 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游J1</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_13.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime13" id ="bgTime13" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime13" id="endTime13" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="13" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('13')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('13')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 14 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游J2</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_14.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime14" id ="bgTime14" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime14" id="endTime14" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="14" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('14')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('14')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 15 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游J3</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_15.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime15" id ="bgTime15" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime15" id="endTime15" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="15" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('15')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('15')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 16 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游J4</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_16.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime16" id ="bgTime16" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime16" id="endTime16" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="16" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('16')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('16')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 17 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游J5</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_17.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime17" id ="bgTime17" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime17" id="endTime17" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="17" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('17')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('17')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 18 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游J6</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_18.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime18" id ="bgTime18" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime18" id="endTime18" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="18" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('18')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('18')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 19 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游J7</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_19.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime19" id ="bgTime19" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime19" id="endTime19" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="19" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('19')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('19')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 20 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游J8</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_20.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime20" id ="bgTime20" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime20" id="endTime20" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="20" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('20')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('20')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 21 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游J9</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_21.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime21" id ="bgTime21" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime21" id="endTime21" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="21" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('21')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('21')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 22 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游J10</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_22.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime22" id ="bgTime22" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime22" id="endTime22" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="22" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('22')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('22')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 23 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游J11</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_23.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime23" id ="bgTime23" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime23" id="endTime23" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="23" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('23')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('23')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 24 method="post" target="_blank">
+                                            <td align="center" valign="center"> 上游J12</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_24.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime24" id ="bgTime24" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime24" id="endTime24" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="24" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('24')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('24')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 25 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游A9</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_25.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime25" id ="bgTime25" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime25" id="endTime25" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="25" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('25')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('25')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 26 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游A10</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_26.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime26" id ="bgTime26" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime26" id="endTime26" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="26" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('26')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('26')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 27 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游A11</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_27.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime27" id ="bgTime27" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime27" id="endTime27" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="27" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('27')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('27')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 28 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游A12</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_28.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime28" id ="bgTime28" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime28" id="endTime28" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="28" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('28')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('28')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 29 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游A5</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_29.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime29" id ="bgTime29" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime29" id="endTime29" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="29" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('29')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('29')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 30 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游A6</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_30.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime30" id ="bgTime30" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime30" id="endTime30" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="30" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('30')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('30')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 31 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游A7</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_31.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime31" id ="bgTime31" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime31" id="endTime31" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="31" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('31')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('31')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 32 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游A8</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_32.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime32" id ="bgTime32" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime32" id="endTime32" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="32" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('32')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('32')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 33 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游A1</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_33.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime33" id ="bgTime33" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime33" id="endTime33" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="33" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('33')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('33')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 34 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游A2</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_34.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime34" id ="bgTime34" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime34" id="endTime34" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="34" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('34')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('34')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 35 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游A3</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_35.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime35" id ="bgTime35" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime35" id="endTime35" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="35" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('35')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('35')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 36 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游A4</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_36.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime36" id ="bgTime36" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime36" id="endTime36" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="36" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('36')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('36')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 37 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游J4</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_37.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime37" id ="bgTime37" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime37" id="endTime37" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="37" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('37')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('37')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 38 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游J3</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_38.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime38" id ="bgTime38" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime38" id="endTime38" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="38" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('38')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('38')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 39 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游J2</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_39.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime39" id ="bgTime39" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime39" id="endTime39" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="39" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('39')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('39')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 40 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游J1</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_40.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime40" id ="bgTime40" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime40" id="endTime40" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="40" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('40')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('40')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 41 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游J8</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_41.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime41" id ="bgTime41" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime41" id="endTime41" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="41" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('41')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('41')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 42 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游J7</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_42.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime42" id ="bgTime42" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime42" id="endTime42" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="42" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('42')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('42')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 43 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游J6</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_43.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime43" id ="bgTime43" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime43" id="endTime43" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="43" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('43')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('43')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 44 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游J5</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_44.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime44" id ="bgTime44" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime44" id="endTime44" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="44" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('44')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('44')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 45 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游J12</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_45.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime45" id ="bgTime45" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime45" id="endTime45" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="45" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('45')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('45')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 46 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游J11</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_46.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime46" id ="bgTime46" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime46" id="endTime46" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="46" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('46')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('46')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 47 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游J10</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_47.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime47" id ="bgTime47" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime47" id="endTime47" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="47" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('47')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('47')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                                <tr>
+                                            <form action="" id= 48 method="post" target="_blank">
+                                            <td align="center" valign="center"> 下游J9</td>
+                                            <td valign="top" >
+                                                <a href="wave_real_48.html" class="btn btn-primary shiny" target="_blank">查看实时数据</a>
+                                            </td>
+                                            <td><label class="label label-orange">起始</label></td>
+                                            <td> <input name="bgTime"  type="datetime-local" class="form-control" placeholder="起始时间" name="bgTime48" id ="bgTime48" value="2019-01-01T00:00"></td>
+                                            <td><label class="label label-orange">结束</label></td>
+                                            <td> <input name="endTime" type="datetime-local" class="form-control" placeholder="结束时间" name="endTime48" id="endTime48" value="2019-07-19T00:00"></td>
+                                            <td><input type="hidden" name="id" value="48" >
+                                                <a target="_blank" type="button" class="btn btn-primary shiny" onclick="waveHistory('48')">数据图形</a></td>
+                                            <td><button type="button" class="btn btn-primary shiny" onclick="excelHistory('48')"  target="_blank">数据列表</button>
+                                            </td>
+                                            <td></td>
+                                            </form>
+                                        </tr>
+                                                                            </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="static/admin/assets/js/jquery.min.js"></script>
+	<script src="static/admin/assets/js/popper.min.js"></script>
+	<script src="static/admin/assets/js/bootstrap.min.js"></script>
+	<!-- Vector map JavaScript -->
+	<script src="static/admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+	<script src="static/admin/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="static/admin/assets/plugins/vectormap/jquery-jvectormap-in-mill.js"></script>
+	<script src="static/admin/assets/plugins/vectormap/jquery-jvectormap-us-aea-en.js"></script>
+	<script src="static/admin/assets/plugins/vectormap/jquery-jvectormap-uk-mill-en.js"></script>
+	<script src="static/admin/assets/plugins/vectormap/jquery-jvectormap-au-mill.js"></script>
+	<script src="static/admin/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <!--plugins-->
+	<script src="static/admin/assets/plugins/simplebar/js/simplebar.min.js"></script>
+	<script src="static/admin/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+	<script src="static/admin/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="static/admin/assets/js/app.js"></script>
+    <!-- <script type="text/javascript">
+        $(function() {
+            $('#menu').metisMenu(); // ul.nav#side-menu
+        })
+    </script> -->
+    </body>
+    <script type="text/javascript">
+        function isNull(arg1)
+        {
+         return !arg1 && arg1!==0 && typeof arg1!=="boolean"?true:false;
+        }
+            function checkDateTime(id_sensor){
+                 console.log("bgTime"+id_sensor);
+                 var bgT=document.getElementById("bgTime"+id_sensor).value;
+                 var enT=document.getElementById("endTime"+id_sensor).value;
+               if(isNull(bgT)||isNull(enT))
+                   {
+                    alert("起始、结束时间设置有误！");
+                    return 0;
+                   }
+        
+                if(bgT==enT)
+                   {
+                    alert("起始、结束时间设置有误！");
+                    return 0;
+                   }
+                return 1;
+            }
+            function waveHistory(id_sensor){   
+               if(checkDateTime(id_sensor)!=0){
+                $("#"+id_sensor).removeAttr('action');
+                $("#"+id_sensor).attr("action","/admin/sensor/wavehistory.html");
+                $("#"+id_sensor).submit();  
+                console.log($("#"+id_sensor));      
+               }
+        
+                // console.log("表单的");
+            }
+            function excelHistory(id_sensor) {
+               if(checkDateTime(id_sensor)!=0){
+                $("#"+id_sensor).removeAttr('action');
+                $("#"+id_sensor).attr("action","/admin/sensor/excelhistory.html");
+                $("#"+id_sensor).submit();
+            }
+            }
+        
+        </script>
+      
+      <script type="text/javascript">
+        var bgList = document.getElementsByName("bgTime");
+        for(var i=0;i<bgList.length;i++){
+        bgList[i].value=getDateNowPre(7);
+        }
+        var endList = document.getElementsByName("endTime");
+        for(var i=0;i<bgList.length;i++){
+        endList[i].value=getDateNowPre(0);
+        }
+        
+        function getDateNowPre(daysPre)
+        {
+        var d = new Date(new Date()-daysPre*24*60*60*1000);
+        var dMonth=d.getMonth()+1;
+        var dM=(dMonth<10)?'0'+dMonth:dMonth;
+        var dDay=(d.getDate()<10)?'0'+d.getDate():d.getDate();
+        var dHour=(d.getHours()<10)?'0'+d.getHours():d.getHours();
+        var dMinut=(d.getMinutes()<10)?'0'+d.getMinutes():d.getMinutes();
+        
+        var _time = d.getFullYear() + '-' +dM+ '-' + dDay+ 'T' + dHour + ':' + dMinut ;
+        return _time;
+        }
+        </script>
+    
+</html>

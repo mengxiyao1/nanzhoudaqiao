@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ch-cn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>裂缝评估 - 桥梁监测系统</title>
+<link href="static/admin/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body{margin:0;background:#1f1f1f;color:#e0e0e0;font-family:"Microsoft YaHei",sans-serif;}
+.header{background:#15314f;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
+.header h2{margin:0;color:#fff;font-size:20px;}
+.header .time{color:#7fd4ff;}
+.container{padding:20px;}
+.card{background:#26364f;border:1px solid #3a5273;border-radius:6px;padding:16px;margin-bottom:16px;}
+.card h3{margin:0 0 12px;color:#7fd4ff;font-size:16px;}
+table{width:100%;border-collapse:collapse;}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid #3a5273;}
+th{color:#7fd4ff;}
+.empty{color:#888;text-align:center;padding:30px;}
+</style>
+</head>
+<body>
+<div class="header">
+  <h2>桥梁监测系统 - 裂缝评估</h2>
+  <span class="time" id="now"></span>
+</div>
+<div class="container">
+  <div class="card">
+    <h3>传感器列表</h3>
+        <div class="empty">暂无传感器数据</div>
+      </div>
+</div>
+<script>document.getElementById('now').textContent=new Date().toLocaleString('zh-CN');</script>
+</body>
+</html>

@@ -1,0 +1,1020 @@
+<!doctype html>
+<html lang="ch-cn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>南洲大桥在线索力监测</title>
+<link href="static/admin/bigdata/css/style.css" rel="stylesheet">
+<link href="static/admin/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="static/admin/assets/css/icons.css" />
+<link rel="stylesheet" href="static/admin/font-awesome-4.7.0/css/font-awesome.css">
+
+<script type="importmap">
+{
+    "imports": {
+        "three": "./static/admin/3D/js/three.module.js"
+    }
+}
+</script>
+<script>
+    if(window.innerWidth < window.innerHeight){
+        window.location.href = "phone.html";
+    }
+</script>
+<style>
+    body {
+        margin: 0;
+        padding: 1px;
+        box-sizing: border-box;
+        background-color: #1f1f1f;
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+    #box {
+        width: 100%;
+        height: 100%;
+    }
+    .btn3{
+        position: absolute;
+        background-color: #5ca1dd6e;
+        color: #ffffff;
+        font-size: 16px;
+        border-radius: 5px;
+        width: 144px;
+        height: 30px;
+        right: -10px;
+    }
+</style>
+</head>
+<body>
+<div id="box"></div>
+<div class="head clearfix" id="head" style="position: absolute;width: 100%;">
+    <h4 style="font-weight: 400;" class="pulll_left">南洲大桥索力监测</h4>
+    <div class="menu menu2 pulll_left">
+    <ul>      
+        <li><a href="sensor_list.html">传感器列表</a></li>
+        <li><a href="datacmp.html">数据对比</a></li>
+    </ul>
+    </div>
+    <p class="time" style="color: #ffffff" id="showTime">2024/3/9 10:53:12</p>
+</div>
+<div class="logo" style="position: absolute;border-radius: 15px;left:10px;top:10px;">
+    <img src="static/admin/hcmlogo.png" style="border-radius: 15px;height: 64px;" alt="">
+</div>
+<div id="infobox" class="boxnav" style="display: none;">
+    <button id="closeInfobox" style="position: absolute;background-color: #5ca1dd6e;color: #ffffff;font-size: 12px;border-radius: 5px;width: 24px;height: 24px;top:10px;right: 10px;">X</button>
+    <div id="infoID" name="sensorid" style="font-size: 12px;line-height:24px;margin: 4px 12px 4px 4px;font-size: 16px;color: #ffffff;"></div>
+    <div id="infoType" style="margin: 8px 8px 0px 4px;">
+        <button class="btn2" id="btn1" name="data2" style="height: 20px;background-color: rgba(7,118,181,.5);font-size: 12px;">一天</button>
+        <button class="btn2" id="btn2" name="data2" style="height: 20px;font-size: 12px">三天</button>
+        <button class="btn2" id="btn3" name="data2" style="height: 20px;font-size: 12px">一周</button>
+        <button class="btn2" id="btn4" name="data2" style="height: 20px;font-size: 12px">一月</button>
+    </div>
+    <div id="infoChart" style="width: 320px; height: 130px; left: 8px; top: auto; position: relative;"></div>
+</div>
+<div class="box" style="position: absolute;width: 25%;height:85%;top: 8%;left:10px;Z-index:114515;">
+    <div class="tit" style="color: #ffffff;">
+        塔 上游侧 当前索力
+        <button class="btn3" name="tower">跳转到上游</button>
+    </div>
+
+    <div class="boxnav" style="width: 100%;height:95%;">
+        <div id="chart" style="height: 100%;width: 100%;"></div>
+    </div>
+</div>
+
+<div class="box" style="position: absolute;width: 25%;height:85%;top: 8%;right:10px;Z-index:114514;">
+    <div class="tit" style="color: #ffffff;">
+        塔 下游侧 当前索力
+        <button class="btn3" name="tower">跳转到下游</button>
+    </div>
+
+    <div class="boxnav" style="width: 100%;height:95%;">
+        <div id="chart2" style="height: 100%;width: 100%;"></div>
+    </div>
+</div>
+
+<div style="position:absolute;bottom: 0px;left: 28%;width: 46%;color: #ffffff;">
+    <div style="position:absolute;bottom: 10px;left: 0%;height: 48px;width: 25%;background-color: rgba(7,118,181,.5);margin: 4px 0px 4px 0px;border-radius: 16px;">
+        <i class="lni lni-play" style="font-size: 24px;margin: 12px 4px 4px 12px;color: #00ff66;"></i>
+        <span style="position: absolute;font-size: 20px;font-family: titlefft;margin: 8px 8px">数据正常：48</span>
+    </div>
+    <div style="position:absolute;bottom: 10px;left: 25%;height: 48px;width: 25%;background-color: rgba(7,118,181,.5);margin: 4px 0px 4px 0px;border-radius: 16px;">
+        <i class="lni lni-bulb" style="font-size: 24px;margin: 12px 4px 4px 12px;color: #ffe000;"></i>
+        <span style="position: absolute;font-size: 20px;font-family: titlefft;margin: 8px 8px">一级预警：0</span>
+    </div>
+    <div style="position:absolute;bottom: 10px;left: 50%;height: 48px;width: 25%;background-color: rgba(7,118,181,.5);margin: 4px 0px 4px 0px;border-radius: 16px;">
+        <i class="lni lni-bulb" style="font-size: 24px;margin: 12px 4px 4px 12px;color: #ff2100;"></i>
+        <span style="position: absolute;font-size: 20px;font-family: titlefft;margin: 8px 8px">二级预警：0</span>
+    </div>
+    <div style="position:absolute;bottom: 10px;left: 75%;height: 48px;width: 25%;background-color: rgba(7,118,181,.5);margin: 4px 0px 4px 0px;border-radius: 16px;">
+        <i class="lni lni-bug" style="font-size: 24px;margin: 12px 4px 4px 12px;color: #00ccff;"></i>
+        <span style="position: absolute;font-size: 20px;font-family: titlefft;margin: 8px 8px">数据中断：0</span>
+    </div>
+</div>
+<div style="position:absolute;bottom: 64px;left: 28%;width: 100%;color: #ffffff;">
+    <div style="height: 32px;width: 540px;background-color: rgba(7,118,181,.5);margin: 4px 4px 8px 0px;border-radius: 16px;">
+        <span style="position: absolute;left:10px;font-size: 12px;margin: 6px 16px 8px 8px" id="cedian">
+            累计监测：169天&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            累积数据：2507组&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            最新数据时间："2026-09-27 13:29:58"        </span>
+    </div>
+</div>
+<div style="position:absolute;right:10px;bottom: 48px;display: none;">
+    <input type="number" id="id" value="1">
+    <button class="btn2" id="test" style="height: 32px;width: 96px;user-select:none;">t1</button>
+    <button class="btn2" id="test2" style="height: 32px;width: 96px;user-select:none;">t2</button>
+    <button class="btn2" id="test3" style="height: 32px;width: 96px;user-select:none;">t3</button>
+    <button class="btn2" id="test4" style="height: 32px;width: 96px;user-select:none;">t4</button>
+</div>
+<script src="static/admin/assets/js/jquery.min.js"></script>
+<script src="static/admin/assets/echarts.min.js"></script>
+<script src="static/admin/js/bootstrap.min.js"></script>
+<script>
+    var t = null;
+    t = setTimeout(time,1000);
+    function time()
+    {
+        clearTimeout(t);//清除定时器
+        dt = new Date();
+            var y=dt.getFullYear();
+            var mt=dt.getMonth()+1;
+            var day=dt.getDate();
+        var h=dt.getHours();
+        var m=dt.getMinutes();
+        var s=dt.getSeconds();
+        if(h<10)h="0"+h;
+        if(m<10)m="0"+m;
+        if(s<10)s="0"+s;
+        document.getElementById("showTime").innerHTML = y+"/"+mt+"/"+day+" "+h+":"+m+":"+s;
+        t = setTimeout(time,1000);      
+    } 
+</script>
+<script type="module">
+//php导入数据
+var sensor = [{"id":9,"id_sensor":"s09","content":"A1","x1":11.47,"y1":21.78041104134483,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":49.02,"ind":1,"value":3306.495},{"id":10,"id_sensor":"s10","content":"A2","x1":11.47,"y1":23.297791476193257,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":50.16,"ind":2,"value":3469.646},{"id":11,"id_sensor":"s11","content":"A3","x1":11.47,"y1":24.80328310019483,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":51.3,"ind":3,"value":4716.7},{"id":12,"id_sensor":"s12","content":"A4","x1":11.47,"y1":26.349677984849176,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":52.44,"ind":4,"value":5675.933},{"id":5,"id_sensor":"s05","content":"A5","x1":11.47,"y1":27.84619911284354,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":53.38,"ind":5,"value":6072.941},{"id":6,"id_sensor":"s06","content":"A6","x1":11.47,"y1":29.350811312638957,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":54.72,"ind":6,"value":5740.114},{"id":7,"id_sensor":"s07","content":"A7","x1":11.47,"y1":30.88581364959031,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":55.86,"ind":7,"value":7955.9},{"id":8,"id_sensor":"s08","content":"A8","x1":11.47,"y1":32.407626571939744,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":57,"ind":8,"value":7708.581},{"id":1,"id_sensor":"s01","content":"A9","x1":11.47,"y1":33.92483076296918,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":58.13,"ind":9,"value":7761.692},{"id":2,"id_sensor":"s02","content":"A10","x1":11.47,"y1":35.7,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":59.28,"ind":10,"value":7890.803},{"id":3,"id_sensor":"s03","content":"A11","x1":11.47,"y1":37,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":60.42,"ind":11,"value":8205.318},{"id":4,"id_sensor":"s04","content":"A12","x1":11.47,"y1":38.548771172828,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":61.56,"ind":12,"value":7767.272},{"id":13,"id_sensor":"s13","content":"J1","x1":11.47,"y1":23.382236972760985,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-61.33,"ind":13,"value":4000.554},{"id":14,"id_sensor":"s14","content":"J2","x1":11.47,"y1":24.91224182982105,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-64.67,"ind":14,"value":4478.113},{"id":15,"id_sensor":"s15","content":"J3","x1":11.47,"y1":26.42576469474754,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-68.01,"ind":15,"value":4292.573},{"id":16,"id_sensor":"s16","content":"J4","x1":11.47,"y1":27.956953820845317,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-71.35,"ind":16,"value":6129.797},{"id":17,"id_sensor":"s17","content":"J5","x1":11.47,"y1":29.46549850507506,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-74.69,"ind":17,"value":6768.726},{"id":18,"id_sensor":"s18","content":"J6","x1":11.47,"y1":30.997424711238715,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-78.03,"ind":18,"value":7370.643},{"id":19,"id_sensor":"s19","content":"J7","x1":11.47,"y1":33.22440039421676,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-81.37,"ind":19,"value":7604.896},{"id":20,"id_sensor":"s20","content":"J8","x1":11.47,"y1":34.75373143808783,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-84.71,"ind":20,"value":7398.272},{"id":21,"id_sensor":"s21","content":"J9","x1":11.47,"y1":36.25504965538272,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-88.05,"ind":21,"value":8434.62},{"id":22,"id_sensor":"s22","content":"J10","x1":11.47,"y1":37.76807580199575,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-91.39,"ind":22,"value":7665.987},{"id":23,"id_sensor":"s23","content":"J11","x1":11.47,"y1":39.27801867893636,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-94.73,"ind":23,"value":7992.47},{"id":24,"id_sensor":"s24","content":"J12","x1":11.47,"y1":40.82093809257101,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-98.07,"ind":24,"value":7886.005},{"id":33,"id_sensor":"s33","content":"A1","x1":-11.3,"y1":21.78041104134483,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":49.02,"ind":25,"value":3466.768},{"id":34,"id_sensor":"s34","content":"A2","x1":-11.3,"y1":23.297791476193257,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":50.16,"ind":26,"value":3371.846},{"id":35,"id_sensor":"s35","content":"A3","x1":-11.3,"y1":24.80328310019483,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":51.3,"ind":27,"value":3701.595},{"id":36,"id_sensor":"s36","content":"A4","x1":-11.3,"y1":26.349677984849176,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":52.44,"ind":28,"value":4779.028},{"id":29,"id_sensor":"s29","content":"A5","x1":-11.3,"y1":27.84619911284354,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":53.38,"ind":29,"value":5510.128},{"id":30,"id_sensor":"s30","content":"A6","x1":-11.3,"y1":29.350811312638957,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":54.72,"ind":30,"value":5842.449},{"id":31,"id_sensor":"s31","content":"A7","x1":-11.3,"y1":30.88581364959031,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":55.86,"ind":31,"value":6845.044},{"id":32,"id_sensor":"s32","content":"A8","x1":-11.3,"y1":32.407626571939744,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":57,"ind":32,"value":8228.208},{"id":25,"id_sensor":"s25","content":"A9","x1":-11.3,"y1":33.92483076296918,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":58.14,"ind":33,"value":7728.463},{"id":26,"id_sensor":"s26","content":"A10","x1":-11.3,"y1":35.7,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":59.28,"ind":34,"value":9294.059},{"id":27,"id_sensor":"s27","content":"A11","x1":-11.3,"y1":37,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":60.42,"ind":35,"value":8611.722},{"id":28,"id_sensor":"s28","content":"A12","x1":-11.3,"y1":38.548771172828,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":61.56,"ind":36,"value":7629.488},{"id":40,"id_sensor":"s40","content":"J1","x1":-11.3,"y1":23.382236972760985,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-61.33,"ind":37,"value":3938.186},{"id":39,"id_sensor":"s39","content":"J2","x1":-11.3,"y1":24.91224182982105,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-64.67,"ind":38,"value":4507.033},{"id":38,"id_sensor":"s38","content":"J3","x1":-11.3,"y1":26.42576469474754,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-68.01,"ind":39,"value":4561.151},{"id":37,"id_sensor":"s37","content":"J4","x1":-11.3,"y1":27.956953820845317,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-71.35,"ind":40,"value":6503.605},{"id":44,"id_sensor":"s44","content":"J5","x1":-11.3,"y1":29.46549850507506,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-74.69,"ind":41,"value":6625.879},{"id":43,"id_sensor":"s43","content":"J6","x1":-11.3,"y1":30.997424711238715,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-78.03,"ind":42,"value":7224.957},{"id":42,"id_sensor":"s42","content":"J7","x1":-11.3,"y1":33.22440039421676,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-81.37,"ind":43,"value":7899.281},{"id":41,"id_sensor":"s41","content":"J8","x1":-11.3,"y1":34.75373143808783,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-84.71,"ind":44,"value":7190.812},{"id":48,"id_sensor":"s48","content":"J9","x1":-11.3,"y1":36.25504965538272,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-88.05,"ind":45,"value":8243.498},{"id":47,"id_sensor":"s47","content":"J10","x1":-11.3,"y1":37.76807580199575,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-91.39,"ind":46,"value":7788.973},{"id":46,"id_sensor":"s46","content":"J11","x1":-11.3,"y1":39.27801867893636,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-94.73,"ind":47,"value":7965.552},{"id":45,"id_sensor":"s45","content":"J12","x1":-11.3,"y1":40.82093809257101,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-98.07,"ind":48,"value":8457.584}];
+//threejs导入文件
+import * as THREE from 'three'
+import { OrbitControls } from './static/admin/3D/js/OrbitControls.js'
+import { OBJLoader } from './static/admin/3D/js/OBJLoader.js'
+import { GUI } from "./static/admin/3D/js/lil-gui.module.min.js"
+import { GLTFLoader } from './static/admin/3D/js/GLTFLoader.js';
+import { DRACOLoader } from './static/admin/3D/js/DRACOLoader.js';
+
+const box = document.getElementById('box')
+
+const scene = new THREE.Scene()
+
+// 场景元素
+const sceneElements = {
+    axesHelper: null,
+    gridHelper: null,
+    sky: null,
+    starField: null
+};
+
+//初始化渲染器
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, logarithmicDepthBuffer: true })
+renderer.setSize(box.clientWidth, box.clientHeight)
+renderer.setPixelRatio(window.devicePixelRatio * 2)
+
+// 上方法导致模型不显示 改为设置背景色
+renderer.setClearColor(0x0a1a2a, 1.0);
+
+//scene.add(sceneElements.sky);
+        
+// 添加星星（浅色主题使用浅蓝色星星）
+const starsGeometry = new THREE.BufferGeometry();
+const starsMaterial = new THREE.PointsMaterial({
+    color: 0xffffff,
+    size: 0.45,
+    transparent: true,
+    opacity: 0.8
+});
+const lightStarsMaterial = new THREE.PointsMaterial({
+    color: 0x87ceeb, // 浅蓝色
+    size: 0.45,
+    transparent: true,
+    opacity: 0.8
+});
+
+const starsVertices = [];
+for (let i = 0; i < 1600; i++) {
+    const x = (Math.random() - 0.5) * 900;
+    const y = (Math.random() - 0.5) * 900;
+    const z = (Math.random() - 0.5) * 900;
+    
+    // 确保星星在半球外
+    const distance = Math.sqrt(x*x + y*y + z*z);
+    if (distance > 50) {
+        starsVertices.push(x, y, z);
+    }
+}
+
+starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
+sceneElements.starField = new THREE.Points(starsGeometry, starsMaterial);
+scene.add(sceneElements.starField);
+
+const camera = new THREE.PerspectiveCamera(75, box.clientWidth / box.clientHeight, 0.1, 1000000)
+const controls = new OrbitControls(camera, renderer.domElement)
+controls.enableDamping = true
+
+box.appendChild(renderer.domElement)
+
+// 添加全局变量存储当前材质引用
+let currentHeatMaterial = null;
+
+window.onresize = () => {
+    renderer.setSize(box.clientWidth, box.clientHeight)
+    camera.aspect = box.clientWidth / box.clientHeight
+    camera.updateProjectionMatrix()
+}
+
+// 添加点击事件处理
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+// 创建信息显示元素
+const infoDiv = document.createElement('div');
+infoDiv.style.position = 'absolute';
+infoDiv.style.top = '10px';
+infoDiv.style.left = '10px';
+infoDiv.style.color = 'white';
+infoDiv.style.backgroundColor = 'rgba(0,0,0,0.7)';
+infoDiv.style.padding = '10px';
+infoDiv.style.borderRadius = '5px';
+infoDiv.style.display = 'none';
+document.body.appendChild(infoDiv);
+
+var myPos;var myPos1;var myPos2;
+var mChart = echarts.init(infoChart);
+var maxValue;
+maxValue = {
+    color: ['#00DEF2'],
+    tooltip: {
+        trigger: 'axis',
+        backgroundColor: 'rgba(13, 64, 71, 0.50)',
+        borderColor: 'rgba(143, 225, 252, 0.60)',
+        padding: 8,
+        textStyle: {
+            color: '#fff',
+        }
+    },
+    legend: {
+        orient: 'vertical',
+        x:'right',
+        y:'center',
+        textStyle: {
+            fontWeight: '500',
+            color: '#F8F8FA',
+            fontFamily: '微软雅黑',
+            fontSize: 12,
+        },
+    },
+    grid: {
+        left: '3%',
+        right: '10%',
+        bottom: '3%',
+        top:'15%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+        axisLine: {                     // 轴线设置
+            show: false,                   // 显示轴线
+        },
+        axisLabel: {
+            textStyle: {
+                color: '#fff',  //更改坐标轴文字颜色
+                fontSize: 12     //更改坐标轴文字大小
+            }
+        },
+        data: []
+        },
+    yAxis: {    
+        scale:true,
+        splitLine: {
+            show: true,
+            lineStyle: {
+                color: '#737A85',
+                type:'dashed'
+            },
+        },
+        axisLabel: { 
+            textStyle: {
+                color: '#fff',  //更改坐标轴文字颜色
+                fontSize: 12     //更改坐标轴文字大小
+            }
+        },
+    },
+    series: [{
+        //name: '落石/次',
+        type: 'line',
+        smooth: true,
+        markPoint: {
+            data: [{
+                symbol:'circle',
+                symbolSize:10,
+                label:{
+                    position:'right',
+                    color:'#fff'
+                },
+                type: 'max',
+                name: '最大值'
+            },
+            {
+                symbol:'circle',
+                symbolSize:10,
+                label:{
+                    position:'right',
+                    color:'#fff'
+                },
+                type: 'min',
+                name: '最小值'
+            }]
+        },
+        areaStyle: {
+            opacity: 0.8,
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                offset: 0,
+                color: 'RGBA(0, 222, 242, 0.6)'
+            },
+            {
+                offset: 1,
+                color: 'RGBA(0, 222, 242, 0)'
+            }])
+        },
+        emphasis: {
+            focus: 'series'
+        },
+        data: []
+    }]
+};
+
+// 点击事件处理函数
+function onMouseClick(event) {
+    // 计算鼠标位置归一化坐标
+    mouse.x =  (event.clientX / window.innerWidth)  * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    towerNow = -5;
+    // 更新射线
+    raycaster.setFromCamera(mouse, camera);
+    
+    // 计算相交对象
+    const intersects = raycaster.intersectObjects(scene.children, true);
+    console.log("射线器返回的对象", intersects);
+    if (intersects.length > 0) {
+        if(intersects[0].object.name != ""){
+            sensor.forEach(item => {
+                if(intersects[0].object.name == item.id_sensor){
+                    if(item.id >24){
+                        towerindex = 2
+                    }else{
+                        towerindex = 1
+                    }
+                    var sensorIn = {
+                        "id" : item.id_sensor,
+                        "tower" : towerindex,
+                    };
+                    var urll = "api/getcabledata_" + sensorIn.id + ".json";
+                    var dataObject = null;
+                    $.ajax({
+                        type: "GET",
+                        url: urll,
+                        data: sensorIn,
+                        dataType: "json",
+                        success: function (data) {
+                            data = jQuery.parseJSON(typeof data === "string" ? data : JSON.stringify(data));
+                            var dataSensor = data.data;
+                            var datetime = data.date;
+                            var infobox = document.getElementById('infobox');
+                            var infoID = document.getElementById('infoID');
+                            var infoType = document.getElementById('infoType');
+                            var infoChart = document.getElementById('infoChart');
+                            var lx = "";
+                            var dw = "";
+                            infoID.name = item.id;
+                            infobox.style = "position: absolute;left:" + event.offsetX + "px;top:"+ event.offsetY +"px;display: show;width:335px;height:230px;";
+                            lx = "拉索&nbsp&nbsp编号："+item.content;
+                            dw = "kN";
+                            infoID.innerHTML = "类型："+ lx + "&nbsp;&nbsp;&nbsp;"+"<br>当前值："+item.value+dw;
+                            maxValue.xAxis.data = datetime;
+                            maxValue.series[0].data = dataSensor;
+                            if (maxValue && typeof maxValue === "object") {
+                                mChart.setOption(maxValue, true);
+                            }
+                        }
+                    })
+                }
+            });
+        }
+
+
+        const point = intersects[0].point;
+        myPos = intersects[0].point;
+        const face = intersects[0].face;
+        // 添加标记点（可选）
+        const markerGeometry = new THREE.SphereGeometry(0.2, 16, 16);
+        const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+        const marker = new THREE.Mesh(markerGeometry, markerMaterial);
+        marker.position.copy(point);
+        scene.add(marker);
+        
+        // 3秒后移除标记
+        setTimeout(() => {
+            scene.remove(marker);
+        }, 3000);
+        
+    }
+}
+// 添加点击事件监听
+window.addEventListener('click', onMouseClick, false);
+
+const clsIb = document.getElementById('closeInfobox');
+clsIb.addEventListener('click', function (event) {
+    document.getElementById('infobox').style.display = "none";
+});
+
+var material;
+var mainMesh;
+
+const button1 = document.getElementById('test');
+button1.addEventListener('click', function (event) {
+    myPos1 = myPos;
+    console.log(myPos1);
+});
+
+const button2 = document.getElementById('test2');
+button2.addEventListener('click', function (event) {
+    myPos2 = myPos;
+    console.log(myPos2);
+});
+
+const button3 = document.getElementById('test3');
+button3.addEventListener('click', function (event) {
+    scene.add(createCable(myPos1,myPos2));
+});
+
+const button4 = document.getElementById('test4');
+button4.addEventListener('click', function (event) {
+    console.log(mainMesh);
+    console.log(camera);
+
+    //更新sensor表
+    var sensorIn = {
+        "id" : document.getElementById('id').value,
+        "x1" : myPos1.x,
+        "y1" : myPos1.y,
+        "z1" : myPos1.z,
+        "x2" : myPos2.x,
+        "y2" : myPos2.y,
+        "z2" : myPos2.z,
+    };
+    $.ajax({
+        type: "POST",
+        url: "/admin/nanzhou/pos.html",
+        data: sensorIn,
+        dataType: "json",
+        // 加这一行！解决收不到POST
+        headers: {'X-CSRF-TOKEN': '<input type="hidden" name="__token__" value="fe193ff47e57cb3b941b79756aed9e51" />'},
+        success: function (data) {
+            console.log("后端返回：", data);
+        },
+        error: function (err) {
+            console.log("请求错误", err);
+        }
+    });
+
+    cableList.forEach(cable => {
+        cable.material.emissive = new THREE.Color(0x66ccff);
+    });
+});
+
+new OBJLoader().load(
+    //'static/admin/3D/models/model.obj',
+    './static/admin/nanzhou.obj',
+    (obj) => {
+        console.log(obj);
+        mainMesh = obj;
+        material = new THREE.MeshPhongMaterial;
+        obj.traverse((child) => {
+            if (child instanceof THREE.Mesh) {
+                child.material = material
+            }
+        })
+        //obj.scale.set(100,100,100)
+        scene.add(obj)
+    }
+)
+
+//light
+const light1 = new THREE.PointLight(0xffffff, 1, 1000, 0.01);
+light1.position.set(100, 250, 0);
+scene.add(light1);
+
+// 生成一个canvas对象，标注文字为参数name
+function createCanvas(name1,text) {
+    /**
+     * 创建一个canvas对象，绘制几何图案或添加文字
+     */
+    const canvas = document.createElement("canvas");
+    const arr = name1.split(""); //分割为单独字符串
+    let num = 0;
+    const reg = /[\u4e00-\u9fa5]/;
+    for (let i = 0; i < arr.length; i++) {
+        if (reg.test(arr[i])) { //判断是不是汉字
+            num += 1;
+        } else {
+            num += 0.5; //英文字母或数字累加0.5
+        }
+    }
+    // 根据字符串符号类型和数量、文字font-size大小来设置canvas画布宽高度
+    const h = 100; //根据渲染像素大小设置，过大性能差，过小不清晰
+    const w = 80;
+    canvas.width = w;
+    canvas.height = h;
+    const h1 = h * 0.8;
+    const c = canvas.getContext('2d');
+    // 定义轮廓颜色，黑色半透明
+    c.fillStyle = "rgba(102, 204, 255,0.5)";
+    // 绘制半圆+矩形轮廓
+    const R = h1 / 2;
+    c.arc(R, R, R, -Math.PI / 2, Math.PI / 2, true); //顺时针半圆
+    c.arc(R, R, R, Math.PI / 2, -Math.PI / 2, true); //顺时针半圆
+    c.fill();
+    // 绘制箭头
+    c.beginPath();
+    const h2 = h - h1;
+    c.moveTo(R - h2 * 0.6, h1-2);
+    c.lineTo(R + h2 * 0.6, h1-2);
+    c.lineTo(R, h);
+    c.fill();
+    // 文字
+    c.beginPath();
+    c.translate(R, h1 / 2);
+    c.fillStyle = "#ffffff"; //文本填充颜色
+    c.font = "bold 30px 微软雅黑"; //字体样式设置
+    c.textBaseline = "middle"; //文本与fillText定义的纵坐标
+    c.textAlign = "center"; //文本居中(以fillText定义的横坐标)
+    //c.fillText(name1, 0, -15);
+    c.fillText(text, 0, 0);
+    return canvas;
+}
+
+function createCable(point1, point2, radius = 0.3, color = 0x00ff00) {
+    // 确保输入是Three.js向量，如果不是则转换
+    const start = point1 instanceof THREE.Vector3 
+        ? point1 
+        : new THREE.Vector3(point1.x, point1.y, point1.z);
+        
+    const end = point2 instanceof THREE.Vector3 
+        ? point2 
+        : new THREE.Vector3(point2.x, point2.y, point2.z);
+
+    // 计算两点之间的向量和长度
+    const direction = new THREE.Vector3().subVectors(end, start);
+    const length = direction.length();
+
+    // 计算旋转四元数：使圆柱从Y轴朝向两点连线方向
+    const quaternion = new THREE.Quaternion();
+    quaternion.setFromUnitVectors(
+        new THREE.Vector3(0, 1, 0),  // 原始方向（Y轴）
+        direction.normalize()        // 目标方向（两点连线）
+    );
+
+    // 创建圆柱几何体
+    const geometry = new THREE.CylinderGeometry(
+        radius,    // 顶部半径
+        radius,    // 底部半径
+        length,    // 高度（两点距离）
+        32         // 分段数（影响平滑度）
+    );
+
+    // 创建材质 - 增加自发光属性用于闪烁效果
+    const material = new THREE.MeshStandardMaterial({
+        color: 0x006400,
+        metalness: 0.2,
+        roughness: 0.8,
+        emissive: color,           // 自发光颜色（与主色一致）
+        emissiveIntensity: 0.2     // 初始发光强度
+    });
+
+    // 创建网格并设置位置和旋转
+    const cylinder = new THREE.Mesh(geometry, material);
+    
+    // 存储材质引用，方便后续修改
+    cylinder.cableMaterial = material;
+    
+    // 放置在两点中间
+    cylinder.position.copy(
+        new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5)
+    );
+    
+    // 应用旋转
+    cylinder.quaternion.copy(quaternion);
+
+    return cylinder;
+}
+
+var cableList=[];
+sensor.forEach(element => {
+    var pos1 = new THREE.Vector3(element['x1'],element['y1'],element['z1'])
+    var pos2 = new THREE.Vector3(element['x2'],element['y2'],element['z2'])
+    const mesh = createCable(pos1,pos2,0.3,0x00ff00);
+    mesh['name'] = element['id_sensor'];
+    cableList.push(mesh);
+    scene.add(mesh);
+});
+
+// 添加动画循环实现闪烁效果
+function animate() {
+    requestAnimationFrame(animate);
+    // 计算闪烁因子（0~1之间波动）
+    const time = Date.now() * 0.001;
+    const blinkFactor = Math.sin(time * 5) * 0.5 + 0.5; // 5是闪烁频率
+    // 遍历所有线缆，更新发光强度
+    cableList.forEach(cylinder => {
+        // 控制发光强度实现闪烁（0.5~2.0之间变化）
+        cylinder.cableMaterial.emissiveIntensity = 0.5 + blinkFactor * 1.5;
+    });
+    renderer.render(scene, camera);
+}
+
+// 启动动画
+animate();
+var myChart = echarts.init(chart);
+var myChart2 = echarts.init(chart2);
+var option;
+var option2;
+
+var cData = [];
+var cData2 = [];
+var cID = [];
+var cID2 = [];
+
+
+for (let i = 0; i < 24; i++) {
+    cData[i] = sensor[i].value;
+    cData2[i] = sensor[i+24].value;
+    cID[i] = sensor[i].content;
+    cID2[i] = sensor[i+24].content;
+}
+
+option = {
+    grid: [
+        {
+            left: "10px",
+            top: "5px",
+            bottom: "0px",
+            containLabel: true,
+            width: "85%",
+        },
+    ],
+    xAxis: {
+        max: 'dataMax',
+        axisLine:{
+            lineStyle:{
+            color:'#4790ea'
+            }
+        },
+        // x轴的分割线
+        splitLine: {
+            show: false
+        },
+        axisLabel: {
+            color: '#ffffff'
+        }
+    },
+    yAxis: {
+        type: 'category',
+        data: cID,
+        inverse: true,
+        animationDuration: 300,
+        animationDurationUpdate: 300,
+        axisLine:{
+            lineStyle:{
+            color:'#ffffff'
+            }
+        },
+        axisLabel: {
+            color: '#ffffff'
+        }
+    },
+    series: [
+    {
+        //realtimeSort: true,
+        type: 'bar',
+        data: cData,
+        label: {
+            show: true,
+            position: 'right',
+            valueAnimation: true,
+            color:'#fff'
+        },
+        barWidth: 16,
+        itemStyle: {
+            borderRadius: [0, 10, 10, 0],
+            color: new echarts.graphic.LinearGradient(1, 0, 0, 1, [
+                {
+                offset: 0,
+                color: '#66ccff'
+                },
+                {
+                offset: 0.5,
+                color: '#AED6F1'
+                },
+                {
+                offset: 1,
+                color: '#1ABC9C'
+                }
+            ])
+        }
+    }
+    ],
+    animationDuration: 0,
+    animationDurationUpdate: 3000,
+    animationEasing: 'linear',
+    animationEasingUpdate: 'linear'
+}
+
+option2 = {
+    grid: [
+        {
+            left: "10px",
+            top: "5px",
+            bottom: "0px",
+            containLabel: true,
+            width: "85%",
+        },
+    ],
+    xAxis: {
+        max: 'dataMax',
+        axisLine:{
+            lineStyle:{
+            color:'#4790ea'
+            }
+        },
+        // x轴的分割线
+        splitLine: {
+            show: false
+        },
+        axisLabel: {
+            color: '#ffffff'
+        }
+    },
+    yAxis: {
+        type: 'category',
+        data: cID2,
+        inverse: true,
+        animationDuration: 300,
+        animationDurationUpdate: 300,
+        axisLine:{
+            lineStyle:{
+            color:'#ffffff'
+            }
+        },
+        axisLabel: {
+            color: '#ffffff'
+        }
+    },
+    series: [
+    {
+        //realtimeSort: true,
+        type: 'bar',
+        data: cData2,
+        label: {
+            show: true,
+            position: 'right',
+            valueAnimation: true,
+            color:'#fff'
+        },
+        barWidth: 16,
+        itemStyle: {
+            borderRadius: [0, 10, 10, 0],
+            color: new echarts.graphic.LinearGradient(1, 0, 0, 1, [
+                {
+                offset: 0,
+                color: '#66ccff'
+                },
+                {
+                offset: 0.5,
+                color: '#AED6F1'
+                },
+                {
+                offset: 1,
+                color: '#1ABC9C'
+                }
+            ])
+        }
+    }
+    ],
+    animationDuration: 0,
+    animationDurationUpdate: 3000,
+    animationEasing: 'linear',
+    animationEasingUpdate: 'linear'
+}
+
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+
+if (option2 && typeof option2 === "object") {
+    myChart2.setOption(option2, true);
+}
+
+const towerList = document.getElementsByName('tower');
+towerList[0].addEventListener('click', function (event) {
+        console.log(camera.position)
+        camera.position.set(91,35,18);
+        camera.lookAt(0,0,0);
+        controls.target = new THREE.Vector3(0,0,0);
+        controls.update();
+});
+towerList[1].addEventListener('click', function (event) {
+        console.log(camera.position)
+        camera.position.set(-91,35,-18);
+        camera.lookAt(0,0,0);
+        controls.target = new THREE.Vector3(0,0,0);
+        controls.update();
+});
+camera.position.set(91,35,18);
+camera.lookAt(0,0,0);
+controls.target = new THREE.Vector3(0,0,0);
+controls.update();
+let towerNow = 1;
+setInterval(() => {
+    // if(towerNow>=0){
+    //     camera.position.set(91,35,18-towerNow%4*230);
+    //     camera.lookAt(0,0,0-towerNow%4*230);
+    //     controls.target = new THREE.Vector3(0,0,0-towerNow%4*230);
+    //     controls.update();
+    // }
+    // towerNow++;
+    // console.log(towerNow);
+},10000);
+
+function createLabel(text) {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = 256;
+    canvas.height = 128;
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 48px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text, canvas.width/2, canvas.height/2);
+    return canvas;
+}
+
+const spriteTower = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: new THREE.CanvasTexture(createLabel('南洲大桥')),
+}));
+
+spriteTower.position.set (0, 50, 0);
+spriteTower.scale.set(25, 20, 2.5);
+scene.add(spriteTower);
+
+
+let List1 = [];
+for (let i = 0; i < 1; i++) {
+    List1[i] = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: new THREE.CanvasTexture(createLabel('七星区方向')),
+    }));
+    List1[i].position.set (0, 45, 30);
+    List1[i].scale.set(15, 10, 2.5);
+    scene.add(List1[i]);
+}
+let List2 = [];
+for (let i = 0; i < 1; i++) {
+    List2[i] = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: new THREE.CanvasTexture(createLabel('叠彩区方向')),
+    }));
+    List2[i].position.set (0, 45, -30);
+    List2[i].scale.set(15, 10, 2.5);
+    scene.add(List2[i]);
+}
+var chartBtn1 = document.getElementById('btn1');
+chartBtn1.addEventListener("click", function () {getData(0,chartBtn1);});
+var chartBtn2 = document.getElementById('btn2');
+chartBtn2.addEventListener("click", function () {getData(1,chartBtn1);});
+var chartBtn3 = document.getElementById('btn3');
+chartBtn3.addEventListener("click", function () {getData(2,chartBtn1);});
+var chartBtn4 = document.getElementById('btn4');
+chartBtn4.addEventListener("click", function () {getData(3,chartBtn1);});
+
+
+function getData(mode,btn){
+    var sensorIn = {
+        "mode" : mode,
+        "id" : document.getElementById('infoID').name,
+        "select" :0,
+        "tower":towerindex,
+    };
+    console.log(sensorIn);
+    var urll = "api/getdatasingle_" + sensorIn.id + "_" + sensorIn.tower + "_" + sensorIn.mode + ".json";
+    var dataObject = null;
+    var btnThis = btn;
+    $.ajax({
+        type: "GET",
+        url: urll,
+        data: sensorIn,
+        dataType: "json",
+        success: function (data) {
+            document.getElementsByName('data2')[0].style.backgroundColor = 'transparent';
+            document.getElementsByName('data2')[1].style.backgroundColor = 'transparent';
+            document.getElementsByName('data2')[2].style.backgroundColor = 'transparent';
+            document.getElementsByName('data2')[3].style.backgroundColor = 'transparent';
+            btnThis.style.backgroundColor = 'rgba(7,118,181,.5)';
+            dataObject = jQuery.parseJSON(typeof data === "string" ? data : JSON.stringify(data));
+            //console.log(dataObject);
+            maxValue.xAxis.data = dataObject.date;
+            maxValue.series[0].data = dataObject.data;
+            if (maxValue && typeof maxValue === "object") {
+                mChart.setOption(maxValue, true);
+            }
+            //overview.xAxis.data = dataObject.datetime;
+            //ovChart.setOption(overview, true);
+        }
+    });
+}
+var towerindex = 0;
+myChart.on('click', function(params) {
+    towerindex = 1;
+    console.log('点击的数据：', params);
+    var sensorIn = {
+        "id" : params.name,
+    };
+    var urll = "api/getcabledata2_" + sensorIn.id + ".json";
+    var dataObject = null;
+
+    $.ajax({
+        type: "GET",
+        url: urll,
+        data: sensorIn,
+        dataType: "json",
+        success: function (data) {
+            data = jQuery.parseJSON(typeof data === "string" ? data : JSON.stringify(data));
+            var dataSensor = data.data;
+            var datetime = data.date;
+            var infobox = document.getElementById('infobox');
+            var infoID = document.getElementById('infoID');
+            var infoType = document.getElementById('infoType');
+            var infoChart = document.getElementById('infoChart');
+            var lx = "";
+            var dw = "";
+            infoID.name = params.name;
+            infobox.style = "position: absolute;left:50%;top:50%;display: show;width:335px;height:230px;";
+            lx = "拉索&nbsp&nbsp编号："+params.name;
+            dw = "kN";
+            infoID.innerHTML = "类型："+ lx + "&nbsp;&nbsp;&nbsp;"+"<br>当前值："+data.data[data.data.length-1]+dw;
+            maxValue.xAxis.data = datetime;
+            maxValue.series[0].data = dataSensor;
+            if (maxValue && typeof maxValue === "object") {
+                mChart.setOption(maxValue, true);
+            }
+        }
+    })
+})
+
+myChart2.on('click', function(params) {
+    towerindex = 2;
+    console.log('点击的数据：', params);
+    var sensorIn = {
+        "id" : params.name,
+    };
+    var urll = "api/getcabledata3_" + sensorIn.id + ".json";
+    var dataObject = null;
+
+    $.ajax({
+        type: "GET",
+        url: urll,
+        data: sensorIn,
+        dataType: "json",
+        success: function (data) {
+            data = jQuery.parseJSON(typeof data === "string" ? data : JSON.stringify(data));
+            var dataSensor = data.data;
+            var datetime = data.date;
+            var infobox = document.getElementById('infobox');
+            var infoID = document.getElementById('infoID');
+            var infoType = document.getElementById('infoType');
+            var infoChart = document.getElementById('infoChart');
+            var lx = "";
+            var dw = "";
+            infoID.name = params.name;
+            infobox.style = "position: absolute;left:50%;top:50%;display: show;width:335px;height:230px;";
+            lx = "拉索&nbsp&nbsp编号："+params.name;
+            dw = "kN";
+            infoID.innerHTML = "类型："+ lx + "&nbsp;&nbsp;&nbsp;"+"<br>当前值："+data.data[data.data.length-1]+dw;
+            maxValue.xAxis.data = datetime;
+            maxValue.series[0].data = dataSensor;
+            if (maxValue && typeof maxValue === "object") {
+                mChart.setOption(maxValue, true);
+            }
+        }
+    })
+})
+</script>
+</body>
+</html>

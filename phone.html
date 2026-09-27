@@ -1,0 +1,967 @@
+<html lang="zh-CN">
+<head>
+    <link href="static/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/admin/assets/css/icons.css" />
+    <link rel="stylesheet" href="static/admin/font-awesome-4.7.0/css/font-awesome.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>南洲大桥在线索力监测</title>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "./static/admin/3D/js/three.module.js"
+            }
+        }
+    </script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background-color: #0A1A2A;
+            font-family: "微软雅黑", sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        }
+
+        /* 顶部栏 */
+        .top-bar {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 5px 10px;
+            background: linear-gradient(180deg, rgba(10,26,42,0.98) 0%, rgba(10,26,42,0.85) 100%);
+            z-index: 300;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            min-width: 0;
+        }
+        .header-left img {
+            border-radius: 8px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+        .header-left h4 {
+            margin: 0 0 0 8px;
+            color: #daf9ff;
+            font-family: titlefft, "微软雅黑", sans-serif;
+            font-size: clamp(13px, 3.6vw, 17px);
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .time-display {
+            font-size: clamp(15px, 4vw, 17px);
+            font-weight: 500;
+            color: #b8e8f8;
+            font-family: titlefft, monospace;
+            white-space: nowrap;
+            line-height: 1.25;
+            text-align: right;
+            letter-spacing: 0.02em;
+        }
+        .time-display .time-date,
+        .time-display .time-clock {
+            display: inline;
+        }
+        .time-display .time-sep {
+            display: inline;
+            margin: 0 3px;
+            opacity: 0.7;
+        }
+
+        /* 导航菜单 */
+        .nav-menu {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 3px 10px 5px;
+            background: rgba(10,26,42,0.95);
+            border-bottom: 1px solid rgba(2,166,181,0.25);
+            z-index: 300;
+        }
+        .nav-menu a {
+            display: inline-block;
+            padding: 4px 12px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 13px;
+            line-height: 1.2;
+            font-family: titlefft, "微软雅黑", sans-serif;
+            border: 1px solid rgba(2,166,181,0.6);
+            border-radius: 4px;
+            background: rgba(7,118,181,0.25);
+            -webkit-tap-highlight-color: rgba(2,166,181,0.3);
+        }
+        .nav-menu a:active,
+        .nav-menu a:hover {
+            color: #f4e925;
+            border-color: #f4e925;
+            background: rgba(7,118,181,0.5);
+        }
+
+        /* 3D 区域（高度约为原先 3/4，模型与相机不变） */
+        .scene-area {
+            flex: 0 0 40vh;
+            max-height: 40vh;
+            min-height: 200px;
+            position: relative;
+            background-color: #0A1A2A;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        #box { width: 100%; height: 100%; touch-action: none; }
+
+        /* 塔台控制面板 */
+        .tower-panel {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            display: flex;
+            gap: 6px;
+            z-index: 200;
+            pointer-events: none;
+        }
+        .tower-card {
+            flex: 1;
+            background: rgba(7,118,181,0.35);
+            border: 1px solid rgba(92,161,221,0.5);
+            border-radius: 8px;
+            padding: 6px 8px;
+            pointer-events: auto;
+            min-width: 0;
+        }
+        .tower-card .tower-title {
+            font-size: 11px;
+            color: #8ecae6;
+            margin-bottom: 2px;
+        }
+        .tower-card .tower-force {
+            font-size: clamp(11px, 3vw, 13px);
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .tower-card .tower-force span { color: #66ccff; font-weight: bold; }
+        .btn-jump {
+            display: block;
+            width: 100%;
+            margin-top: 4px;
+            background-color: rgba(92,161,221,0.45);
+            color: #fff;
+            font-size: 11px;
+            border-radius: 4px;
+            padding: 4px 6px;
+            border: 1px solid rgba(255,255,255,0.25);
+            cursor: pointer;
+        }
+        .btn-jump:active { background-color: rgba(7,118,181,.7); }
+
+        /* 下方数据区：约占页面 1/3，上移填补模型下方空白 */
+        .data-panel {
+            flex: 1;
+            min-height: 34vh;
+            margin-top: -6vh;
+            position: relative;
+            z-index: 150;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(180deg, rgba(10,26,42,0.9) 0%, #0A1A2A 14px);
+            overflow: hidden;
+        }
+
+        /* 状态栏（与电脑版卡片风格一致） */
+        .status-bar {
+            flex-shrink: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            padding: 4px 8px 2px;
+            background-color: transparent;
+        }
+        .status-item {
+            display: flex;
+            align-items: center;
+            height: 32px;
+            padding: 0 8px;
+            background-color: rgba(7,118,181,.5);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 13px;
+            font-family: titlefft, "微软雅黑", sans-serif;
+            overflow: hidden;
+        }
+        .status-item i {
+            font-size: 16px;
+            margin-right: 6px;
+            flex-shrink: 0;
+        }
+        .status-item .status-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .status-item .status-num {
+            font-weight: bold;
+            margin: 0 2px;
+        }
+
+        /* 图表区域（在数据区内自适应，支持滑动） */
+        .chart-area {
+            flex: 1;
+            min-height: 0;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .chart-switch {
+            flex-shrink: 0;
+            text-align: center;
+            padding: 2px 0;
+        }
+        .btn2 {
+            border: 1px solid rgba(73, 153, 199, 0.9);
+            height: 28px;
+            min-width: 72px;
+            padding: 0 12px;
+            border-radius: 4px;
+            background-color: rgba(73, 153, 199, 0.4);
+            color: white;
+            font-size: 13px;
+            cursor: pointer;
+            margin: 0 4px;
+        }
+        .btn2.active { background-color: rgba(7,118,181,.5); }
+        .btn2:active { background-color: #008CBA; }
+        #cableInfo {
+            flex: 1;
+            min-height: 0;
+            position: relative;
+        }
+        #chart { width: 100%; height: 100%; }
+
+        /* 详情弹层 */
+        #infobox {
+            display: none;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(10,26,42,0.97);
+            z-index: 500;
+            flex-direction: column;
+            padding: 10px;
+        }
+        #infobox.show { display: flex; }
+        #closeInfobox {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: rgba(92,161,221,0.45);
+            color: #fff;
+            font-size: 14px;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            z-index: 10;
+            cursor: pointer;
+        }
+        #infoID {
+            font-size: 14px;
+            color: #fff;
+            margin: 8px 36px 8px 0;
+            line-height: 1.6;
+        }
+        #infoType {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+        #infoType .btn2 {
+            height: 26px;
+            min-width: 56px;
+            font-size: 12px;
+            margin: 0;
+        }
+        #infoChart {
+            flex: 1 1 auto;
+            min-height: 160px;
+            height: 0;
+            width: 100%;
+        }
+
+        /* 底部信息 */
+        .monitor-footer {
+            flex-shrink: 0;
+            width: 100%;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            padding: 2px 8px 4px;
+        }
+        .monitor-footer .info-bar {
+            background-color: rgba(7,118,181,.5);
+            border-radius: 12px;
+            padding: 4px 12px;
+            font-size: 11px;
+            color: #fff;
+            text-align: center;
+            line-height: 1.6;
+            max-width: 100%;
+            word-break: break-all;
+        }
+
+        @media (max-width: 380px) {
+            .header-left h4 {
+                font-size: 13px;
+            }
+            .time-display {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                font-size: 14px;
+                line-height: 1.25;
+                white-space: normal;
+            }
+            .time-display .time-sep {
+                display: none;
+            }
+            .time-display .time-date,
+            .time-display .time-clock {
+                display: block;
+            }
+        }
+
+        @media (min-width: 480px) {
+            .status-bar {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .status-item {
+                height: 40px;
+                font-size: 13px;
+            }
+            .header-left img { height: 34px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部栏 -->
+    <div class="top-bar">
+        <div class="header-left">
+            <img src="static/admin/hcmlogo.png" alt="logo">
+            <h4>南洲大桥索力监测</h4>
+        </div>
+        <div class="header-right">
+            <div class="time-display" id="timeDisplay">
+                <span class="time-date" id="timeDate"></span>
+                <span class="time-sep"> </span>
+                <span class="time-clock" id="timeClock"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 导航（与电脑版相同链接） -->
+    <nav class="nav-menu">
+        <a href="sensor_list.html">传感器列表</a>
+        <a href="datacmp.html">数据对比</a>
+    </nav>
+
+    <!-- 3D 场景 -->
+    <div class="scene-area">
+        <div class="tower-panel">
+            <div class="tower-card">
+                <div class="tower-title">塔 · 上游侧 · 当前索力</div>
+                <button class="btn-jump" name="tower" id="jumpUp">跳转到上游</button>
+            </div>
+            <div class="tower-card">
+                <div class="tower-title">塔 · 下游侧 · 当前索力</div>
+                <button class="btn-jump" name="tower" id="jumpDown">跳转到下游</button>
+            </div>
+        </div>
+        <div id="box"></div>
+    </div>
+
+    <div class="data-panel">
+    <!-- 状态指示（与电脑版一致） -->
+    <div class="status-bar">
+        <div class="status-item">
+            <i class="lni lni-play" style="color:#00ff66;"></i>
+            <span class="status-text">数据正常：<span class="status-num" id="cntNormal">48</span></span>
+        </div>
+        <div class="status-item">
+            <i class="lni lni-bulb" style="color:#ffe000;"></i>
+            <span class="status-text">一级预警：<span class="status-num" id="cntWarn1">0</span></span>
+        </div>
+        <div class="status-item">
+            <i class="lni lni-bulb" style="color:#ff2100;"></i>
+            <span class="status-text">二级预警：<span class="status-num" id="cntWarn2">0</span></span>
+        </div>
+        <div class="status-item">
+            <i class="lni lni-bug" style="color:#00ccff;"></i>
+            <span class="status-text">数据中断：<span class="status-num" id="cntOffline">0</span></span>
+        </div>
+    </div>
+
+    <!-- 图表区域 -->
+    <div class="chart-area">
+        <div class="chart-switch">
+            <button class="btn2 active" id="btnUpstream">上游侧</button>
+            <button class="btn2" id="btnDownstream">下游侧</button>
+        </div>
+        <div id="cableInfo">
+            <div id="chart"></div>
+            <div id="infobox">
+                <button id="closeInfobox">✕</button>
+                <div id="infoID" name="sensorid"></div>
+                <div id="infoType">
+                    <button class="btn2 active" id="btn1" name="data2">一天</button>
+                    <button class="btn2" id="btn2" name="data2">三天</button>
+                    <button class="btn2" id="btn3" name="data2">一周</button>
+                    <button class="btn2" id="btn4" name="data2">一月</button>
+                </div>
+                <div id="infoChart"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部统计 -->
+    <div class="monitor-footer">
+        <div class="info-bar">
+            累计监测：156天&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            累积数据：2507组&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            最新数据时间："2026-09-27 13:29:58"        </div>
+    </div>
+    </div>
+
+    <!-- 隐藏调试按钮 -->
+    <div style="display:none;">
+        <input type="number" id="id" value="1">
+        <button class="btn2" id="test">t1</button>
+        <button class="btn2" id="test2">t2</button>
+        <button class="btn2" id="test3">t3</button>
+        <button class="btn2" id="test4">t4</button>
+    </div>
+</body>
+<script src="static/admin/js/bootstrap.min.js"></script>
+<script src="static/admin/assets/js/jquery.min.js"></script>
+<script src="static/admin/assets/echarts.min.js"></script>
+
+<script type="module">
+var sensor = [{"id":1,"id_sensor":"s01","content":"A9","x1":11.47,"y1":33.92483076296918,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":58.13,"ind":9,"value":7761.692},{"id":2,"id_sensor":"s02","content":"A10","x1":11.47,"y1":35.7,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":59.28,"ind":10,"value":7890.803},{"id":3,"id_sensor":"s03","content":"A11","x1":11.47,"y1":37,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":60.42,"ind":11,"value":8205.318},{"id":4,"id_sensor":"s04","content":"A12","x1":11.47,"y1":38.548771172828,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":61.56,"ind":12,"value":7767.272},{"id":5,"id_sensor":"s05","content":"A5","x1":11.47,"y1":27.84619911284354,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":53.38,"ind":5,"value":6072.941},{"id":6,"id_sensor":"s06","content":"A6","x1":11.47,"y1":29.350811312638957,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":54.72,"ind":6,"value":5740.114},{"id":7,"id_sensor":"s07","content":"A7","x1":11.47,"y1":30.88581364959031,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":55.86,"ind":7,"value":7955.9},{"id":8,"id_sensor":"s08","content":"A8","x1":11.47,"y1":32.407626571939744,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":57,"ind":8,"value":7708.581},{"id":9,"id_sensor":"s09","content":"A1","x1":11.47,"y1":21.78041104134483,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":49.02,"ind":1,"value":3306.495},{"id":10,"id_sensor":"s10","content":"A2","x1":11.47,"y1":23.297791476193257,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":50.16,"ind":2,"value":3469.646},{"id":11,"id_sensor":"s11","content":"A3","x1":11.47,"y1":24.80328310019483,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":51.3,"ind":3,"value":4716.7},{"id":12,"id_sensor":"s12","content":"A4","x1":11.47,"y1":26.349677984849176,"z1":0.58,"x2":11.47,"y2":-4.81,"z2":52.44,"ind":4,"value":5675.933},{"id":13,"id_sensor":"s13","content":"J1","x1":11.47,"y1":23.382236972760985,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-61.33,"ind":13,"value":4000.554},{"id":14,"id_sensor":"s14","content":"J2","x1":11.47,"y1":24.91224182982105,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-64.67,"ind":14,"value":4478.113},{"id":15,"id_sensor":"s15","content":"J3","x1":11.47,"y1":26.42576469474754,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-68.01,"ind":15,"value":4292.573},{"id":16,"id_sensor":"s16","content":"J4","x1":11.47,"y1":27.956953820845317,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-71.35,"ind":16,"value":6129.797},{"id":17,"id_sensor":"s17","content":"J5","x1":11.47,"y1":29.46549850507506,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-74.69,"ind":17,"value":6768.726},{"id":18,"id_sensor":"s18","content":"J6","x1":11.47,"y1":30.997424711238715,"z1":0.6,"x2":11.47,"y2":-4.81,"z2":-78.03,"ind":18,"value":7370.643},{"id":19,"id_sensor":"s19","content":"J7","x1":11.47,"y1":33.22440039421676,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-81.37,"ind":19,"value":7604.896},{"id":20,"id_sensor":"s20","content":"J8","x1":11.47,"y1":34.75373143808783,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-84.71,"ind":20,"value":7398.272},{"id":21,"id_sensor":"s21","content":"J9","x1":11.47,"y1":36.25504965538272,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-88.05,"ind":21,"value":8434.62},{"id":22,"id_sensor":"s22","content":"J10","x1":11.47,"y1":37.76807580199575,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-91.39,"ind":22,"value":7665.987},{"id":23,"id_sensor":"s23","content":"J11","x1":11.47,"y1":39.27801867893636,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-94.73,"ind":23,"value":7992.47},{"id":24,"id_sensor":"s24","content":"J12","x1":11.47,"y1":40.82093809257101,"z1":2.12,"x2":11.47,"y2":-4.81,"z2":-98.07,"ind":24,"value":7886.005},{"id":25,"id_sensor":"s25","content":"A9","x1":-11.3,"y1":33.92483076296918,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":58.14,"ind":33,"value":7728.463},{"id":26,"id_sensor":"s26","content":"A10","x1":-11.3,"y1":35.7,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":59.28,"ind":34,"value":9294.059},{"id":27,"id_sensor":"s27","content":"A11","x1":-11.3,"y1":37,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":60.42,"ind":35,"value":8611.722},{"id":28,"id_sensor":"s28","content":"A12","x1":-11.3,"y1":38.548771172828,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":61.56,"ind":36,"value":7629.488},{"id":29,"id_sensor":"s29","content":"A5","x1":-11.3,"y1":27.84619911284354,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":53.38,"ind":29,"value":5510.128},{"id":30,"id_sensor":"s30","content":"A6","x1":-11.3,"y1":29.350811312638957,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":54.72,"ind":30,"value":5842.449},{"id":31,"id_sensor":"s31","content":"A7","x1":-11.3,"y1":30.88581364959031,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":55.86,"ind":31,"value":6845.044},{"id":32,"id_sensor":"s32","content":"A8","x1":-11.3,"y1":32.407626571939744,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":57,"ind":32,"value":8228.208},{"id":33,"id_sensor":"s33","content":"A1","x1":-11.3,"y1":21.78041104134483,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":49.02,"ind":25,"value":3466.768},{"id":34,"id_sensor":"s34","content":"A2","x1":-11.3,"y1":23.297791476193257,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":50.16,"ind":26,"value":3371.846},{"id":35,"id_sensor":"s35","content":"A3","x1":-11.3,"y1":24.80328310019483,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":51.3,"ind":27,"value":3701.595},{"id":36,"id_sensor":"s36","content":"A4","x1":-11.3,"y1":26.349677984849176,"z1":0.58,"x2":-11.3,"y2":-4.81,"z2":52.44,"ind":28,"value":4779.028},{"id":37,"id_sensor":"s37","content":"J4","x1":-11.3,"y1":27.956953820845317,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-71.35,"ind":40,"value":6503.605},{"id":38,"id_sensor":"s38","content":"J3","x1":-11.3,"y1":26.42576469474754,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-68.01,"ind":39,"value":4561.151},{"id":39,"id_sensor":"s39","content":"J2","x1":-11.3,"y1":24.91224182982105,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-64.67,"ind":38,"value":4507.033},{"id":40,"id_sensor":"s40","content":"J1","x1":-11.3,"y1":23.382236972760985,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-61.33,"ind":37,"value":3938.186},{"id":41,"id_sensor":"s41","content":"J8","x1":-11.3,"y1":34.75373143808783,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-84.71,"ind":44,"value":7190.812},{"id":42,"id_sensor":"s42","content":"J7","x1":-11.3,"y1":33.22440039421676,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-81.37,"ind":43,"value":7899.281},{"id":43,"id_sensor":"s43","content":"J6","x1":-11.3,"y1":30.997424711238715,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-78.03,"ind":42,"value":7224.957},{"id":44,"id_sensor":"s44","content":"J5","x1":-11.3,"y1":29.46549850507506,"z1":0.6,"x2":-11.3,"y2":-4.81,"z2":-74.69,"ind":41,"value":6625.879},{"id":45,"id_sensor":"s45","content":"J12","x1":-11.3,"y1":40.82093809257101,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-98.07,"ind":48,"value":8457.584},{"id":46,"id_sensor":"s46","content":"J11","x1":-11.3,"y1":39.27801867893636,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-94.73,"ind":47,"value":7965.552},{"id":47,"id_sensor":"s47","content":"J10","x1":-11.3,"y1":37.76807580199575,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-91.39,"ind":46,"value":7788.973},{"id":48,"id_sensor":"s48","content":"J9","x1":-11.3,"y1":36.25504965538272,"z1":2.12,"x2":-11.3,"y2":-4.81,"z2":-88.05,"ind":45,"value":8243.498}];
+
+import * as THREE from 'three'
+import { OrbitControls } from './static/admin/3D/js/OrbitControls.js'
+import { OBJLoader } from './static/admin/3D/js/OBJLoader.js'
+
+// ========== 时间显示 ==========
+function updateTime() {
+    var now = new Date();
+    var y = now.getFullYear();
+    var mt = now.getMonth() + 1;
+    var day = now.getDate();
+    var h = String(now.getHours()).padStart(2, '0');
+    var m = String(now.getMinutes()).padStart(2, '0');
+    var s = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('timeDate').textContent = y + '/' + mt + '/' + day;
+    document.getElementById('timeClock').textContent = h + ':' + m + ':' + s;
+}
+updateTime();
+setInterval(updateTime, 1000);
+
+// ========== 状态统计（与电脑版数据一致，后端可注入） ==========
+var towerindex = 1;
+
+// ========== Three.js 场景 ==========
+const box = document.getElementById('box');
+const scene = new THREE.Scene();
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, logarithmicDepthBuffer: true });
+renderer.setSize(box.clientWidth, box.clientHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x0a1a2a, 1.0);
+box.appendChild(renderer.domElement);
+
+const starsGeometry = new THREE.BufferGeometry();
+const starsMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.45, transparent: true, opacity: 0.8 });
+const starsVertices = [];
+for (let i = 0; i < 1200; i++) {
+    const x = (Math.random() - 0.5) * 900;
+    const y = (Math.random() - 0.5) * 900;
+    const z = (Math.random() - 0.5) * 900;
+    if (Math.sqrt(x*x + y*y + z*z) > 50) starsVertices.push(x, y, z);
+}
+starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
+scene.add(new THREE.Points(starsGeometry, starsMaterial));
+
+const camera = new THREE.PerspectiveCamera(75, box.clientWidth / box.clientHeight, 0.1, 1000000);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+
+function resizeScene() {
+    var w = box.clientWidth, h = box.clientHeight;
+    if (w === 0 || h === 0) return;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', resizeScene);
+
+// ========== 线缆创建 ==========
+function createCable(point1, point2, radius, color) {
+    radius = radius || 0.3;
+    color = color || 0x00ff00;
+    const start = point1 instanceof THREE.Vector3 ? point1 : new THREE.Vector3(point1.x, point1.y, point1.z);
+    const end = point2 instanceof THREE.Vector3 ? point2 : new THREE.Vector3(point2.x, point2.y, point2.z);
+    const direction = new THREE.Vector3().subVectors(end, start);
+    const length = direction.length();
+    const quaternion = new THREE.Quaternion();
+    quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction.normalize());
+    const geometry = new THREE.CylinderGeometry(radius, radius, length, 16);
+    const mat = new THREE.MeshStandardMaterial({
+        color: 0x006400, metalness: 0.2, roughness: 0.8,
+        emissive: color, emissiveIntensity: 0.2
+    });
+    const cylinder = new THREE.Mesh(geometry, mat);
+    cylinder.cableMaterial = mat;
+    cylinder.position.copy(new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5));
+    cylinder.quaternion.copy(quaternion);
+    return cylinder;
+}
+
+var cableList = [];
+var selectedCableName = null;
+var CABLE_EMISSIVE_NORMAL = 0x00ff00;
+var CABLE_EMISSIVE_HIGHLIGHT = 0xffff00;
+
+function findSensorByContent(content, side) {
+    var start = side === 'downstream' ? 24 : 0;
+    for (var i = start; i < start + 24; i++) {
+        if (sensor[i].content === content) return sensor[i];
+    }
+    return null;
+}
+
+function highlightCable(idSensor) {
+    selectedCableName = idSensor || null;
+    cableList.forEach(function(c) {
+        if (c.name === idSensor) {
+            c.cableMaterial.emissive.setHex(CABLE_EMISSIVE_HIGHLIGHT);
+        } else {
+            c.cableMaterial.emissive.setHex(CABLE_EMISSIVE_NORMAL);
+        }
+    });
+}
+
+function clearCableHighlight() {
+    highlightCable(null);
+}
+
+sensor.forEach(function(element) {
+    var pos1 = new THREE.Vector3(element.x1, element.y1, element.z1);
+    var pos2 = new THREE.Vector3(element.x2, element.y2, element.z2);
+    var mesh = createCable(pos1, pos2, 0.3, 0x00ff00);
+    mesh.name = element.id_sensor;
+    cableList.push(mesh);
+    scene.add(mesh);
+});
+
+new OBJLoader().load('./static/admin/nanzhou.obj', function(obj) {
+    var material = new THREE.MeshPhongMaterial();
+    obj.traverse(function(child) {
+        if (child instanceof THREE.Mesh) child.material = material;
+    });
+    scene.add(obj);
+});
+
+[0].forEach(function(z) {
+    var light = new THREE.PointLight(0xffffff, 1, 1000, 0.01);
+    light.position.set(100, 250, z);
+    scene.add(light);
+});
+
+function createLabel(text) {
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+    canvas.width = 256; canvas.height = 128;
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 48px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text, canvas.width/2, canvas.height/2);
+    return canvas;
+}
+
+var spriteTower = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: new THREE.CanvasTexture(createLabel('南洲大桥'))
+}));
+spriteTower.position.set(0, 50, 0);
+spriteTower.scale.set(25, 20, 2.5);
+scene.add(spriteTower);
+
+[{text:'七星区方向', z:30}, {text:'叠彩区方向', z:-30}].forEach(function(item) {
+    var sp = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: new THREE.CanvasTexture(createLabel(item.text))
+    }));
+    sp.position.set(0, 45, item.z);
+    sp.scale.set(15, 10, 2.5);
+    scene.add(sp);
+});
+
+function animate() {
+    requestAnimationFrame(animate);
+    var blink = Math.sin(Date.now() * 0.005) * 0.5 + 0.5;
+    cableList.forEach(function(c) {
+        if (c.name === selectedCableName) {
+            c.cableMaterial.emissiveIntensity = 1.8 + blink * 2.2;
+        } else if (selectedCableName) {
+            c.cableMaterial.emissiveIntensity = 0.15 + blink * 0.25;
+        } else {
+            c.cableMaterial.emissiveIntensity = 0.5 + blink * 1.5;
+        }
+    });
+    controls.update();
+    renderer.render(scene, camera);
+}
+animate();
+
+// 视线目标 Y 上移，桥梁在画面中稍往下显示（避开顶部塔台卡片）
+// 视线目标 Y 上移，桥梁在画面中稍往下显示（避开顶部塔台卡片）
+var viewLookAtY = 10;
+
+function setCameraView(upstream) {
+    if (upstream) {
+        camera.position.set(91, 35, 18);
+    } else {
+        camera.position.set(-91, 35, -18);
+    }
+    camera.lookAt(0, viewLookAtY, 0);
+    controls.target.set(0, viewLookAtY, 0);
+    controls.update();
+}
+
+setCameraView(true);
+
+document.getElementById('jumpUp').addEventListener('click', function() {
+    setCameraView(true);
+});
+document.getElementById('jumpDown').addEventListener('click', function() {
+    setCameraView(false);
+});
+
+// ========== 3D 点击/触摸 ==========
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+function handle3DPick(clientX, clientY) {
+    var rect = box.getBoundingClientRect();
+    mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+    var intersects = raycaster.intersectObjects(scene.children, true);
+    if (intersects.length > 0 && intersects[0].object.name) {
+        sensor.forEach(function(item) {
+            if (intersects[0].object.name == item.id_sensor) {
+                towerindex = item.id > 24 ? 2 : 1;
+                highlightCable(item.id_sensor);
+                var infoID = setInfoQueryId(item);
+                infoID.innerHTML = '类型：拉索&nbsp;&nbsp;编号：' + item.content + '<br>当前值：' + item.value + 'kN';
+                showInfobox();
+                $.ajax({
+                    type: 'GET',
+                    url: "api/getcabledata_" + item.id_sensor + ".json",
+                    data: { id: item.id_sensor, tower: towerindex },
+                    dataType: 'json',
+                    success: function(data) {
+                        applyInfoChart(data);
+                    }
+                });
+            }
+        });
+        var point = intersects[0].point;
+        myPos = point;
+        var marker = new THREE.Mesh(
+            new THREE.SphereGeometry(0.2, 16, 16),
+            new THREE.MeshBasicMaterial({ color: 0xffff00 })
+        );
+        marker.position.copy(point);
+        scene.add(marker);
+        setTimeout(function() { scene.remove(marker); }, 3000);
+    }
+}
+
+box.addEventListener('click', function(e) { handle3DPick(e.clientX, e.clientY); });
+box.addEventListener('touchend', function(e) {
+    if (e.changedTouches.length > 0) {
+        var t = e.changedTouches[0];
+        handle3DPick(t.clientX, t.clientY);
+    }
+});
+
+// ========== ECharts 图表（与电脑版相同数据索引：sensor[0-23]上游，sensor[24-47]下游） ==========
+var myChart = echarts.init(document.getElementById('chart'));
+var mChart = null;
+
+function parseApiData(data) {
+    if (data == null) return null;
+    if (typeof data === 'string') {
+        try { return jQuery.parseJSON(data); } catch (e) { return null; }
+    }
+    return data;
+}
+
+function ensureMChart() {
+    var el = document.getElementById('infoChart');
+    if (!mChart || mChart.isDisposed()) {
+        mChart = echarts.init(el);
+    }
+    return mChart;
+}
+
+function applyInfoChart(data) {
+    var obj = parseApiData(data);
+    if (!obj || !obj.date || !obj.data) return;
+    maxValue.xAxis.data = obj.date;
+    maxValue.series[0].data = obj.data;
+    var chart = ensureMChart();
+    chart.setOption(maxValue, true);
+    setTimeout(function() { chart.resize(); }, 80);
+}
+
+function setInfoQueryId(sensorItem) {
+    var infoID = document.getElementById('infoID');
+    infoID.name = sensorItem.content;
+    infoID.setAttribute('data-sensor-id', sensorItem.id_sensor);
+    return infoID;
+}
+
+var cData = [], cData2 = [], cID = [], cID2 = [];
+for (var i = 0; i < 24; i++) {
+    cData[i] = sensor[i].value;
+    cData2[i] = sensor[i + 24].value;
+    cID[i] = sensor[i].content;
+    cID2[i] = sensor[i + 24].content;
+}
+
+function getBarOption(data, ids) {
+    var maxVal = Math.max.apply(null, data.map(function(v) { return Number(v) || 0; }));
+    var xMax = Math.ceil(maxVal * 1.28);
+    return {
+        grid: { left: 10, top: 8, bottom: 22, right: 22, containLabel: true },
+        dataZoom: [
+            { type: 'inside', yAxisIndex: 0, start: 0, end: 32, zoomOnMouseWheel: false, moveOnMouseMove: true, moveOnMouseWheel: true, filterMode: 'none' },
+            { type: 'slider', yAxisIndex: 0, start: 0, end: 32, width: 16, right: 4,
+              borderColor: 'rgba(92,161,221,0.5)', fillerColor: 'rgba(7,118,181,0.35)',
+              handleStyle: { color: '#66ccff' }, textStyle: { color: '#fff', fontSize: 11 },
+              brushSelect: false, filterMode: 'none' },
+            { type: 'inside', xAxisIndex: 0, start: 0, end: 78, zoomOnMouseWheel: false, moveOnMouseMove: true, moveOnMouseWheel: false, filterMode: 'none' },
+            { type: 'slider', xAxisIndex: 0, start: 0, end: 78, height: 12, bottom: 2, left: 10, right: 26,
+              borderColor: 'rgba(92,161,221,0.5)', fillerColor: 'rgba(7,118,181,0.35)',
+              handleStyle: { color: '#66ccff' }, textStyle: { color: '#fff', fontSize: 10 },
+              brushSelect: false, filterMode: 'none' }
+        ],
+        xAxis: {
+            min: 0,
+            max: xMax,
+            axisLine: { lineStyle: { color: '#4790ea' } },
+            splitLine: { show: false },
+            axisLabel: { color: '#ffffff', fontSize: 12 }
+        },
+        yAxis: {
+            type: 'category',
+            data: ids,
+            inverse: true,
+            animationDuration: 300,
+            animationDurationUpdate: 300,
+            axisLine: { lineStyle: { color: '#ffffff' } },
+            axisLabel: { color: '#ffffff', fontSize: 12, margin: 10 }
+        },
+        series: [{
+            type: 'bar',
+            data: data,
+            label: {
+                show: true,
+                position: 'right',
+                valueAnimation: true,
+                color: '#fff',
+                fontSize: 12,
+                fontWeight: 500,
+                formatter: function(p) { return Number(p.value).toFixed(3); }
+            },
+            barWidth: 16,
+            barCategoryGap: '30%',
+            itemStyle: {
+                borderRadius: [0, 10, 10, 0],
+                color: new echarts.graphic.LinearGradient(1, 0, 0, 1, [
+                    { offset: 0, color: '#66ccff' },
+                    { offset: 0.5, color: '#AED6F1' },
+                    { offset: 1, color: '#1ABC9C' }
+                ])
+            }
+        }],
+        animationDuration: 0,
+        animationDurationUpdate: 3000,
+        animationEasing: 'linear',
+        animationEasingUpdate: 'linear'
+    };
+}
+
+myChart.setOption(getBarOption(cData, cID));
+
+var currentSide = 'upstream';
+
+document.getElementById('btnUpstream').addEventListener('click', function() {
+    this.classList.add('active');
+    document.getElementById('btnDownstream').classList.remove('active');
+    currentSide = 'upstream';
+    myChart.setOption(getBarOption(cData, cID), true);
+});
+document.getElementById('btnDownstream').addEventListener('click', function() {
+    this.classList.add('active');
+    document.getElementById('btnUpstream').classList.remove('active');
+    currentSide = 'downstream';
+    myChart.setOption(getBarOption(cData2, cID2), true);
+});
+
+var maxValue = {
+    color: ['#00DEF2'],
+    tooltip: {
+        trigger: 'axis',
+        backgroundColor: 'rgba(13, 64, 71, 0.50)',
+        borderColor: 'rgba(143, 225, 252, 0.60)',
+        padding: 8,
+        textStyle: { color: '#fff' }
+    },
+    grid: { left: '3%', right: '5%', bottom: '3%', top: '12%', containLabel: true },
+    xAxis: {
+        type: 'category', axisLine: { show: false },
+        axisLabel: { textStyle: { color: '#fff', fontSize: 10 } },
+        data: []
+    },
+    yAxis: {
+        scale: true,
+        splitLine: { show: true, lineStyle: { color: '#737A85', type: 'dashed' } },
+        axisLabel: { textStyle: { color: '#fff', fontSize: 10 } }
+    },
+    series: [{
+        type: 'line', smooth: true,
+        markPoint: {
+            data: [
+                { symbol: 'circle', symbolSize: 8, label: { position: 'right', color: '#fff', fontSize: 10 }, type: 'max', name: '最大值' },
+                { symbol: 'circle', symbolSize: 8, label: { position: 'right', color: '#fff', fontSize: 10 }, type: 'min', name: '最小值' }
+            ]
+        },
+        areaStyle: {
+            opacity: 0.8,
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                { offset: 0, color: 'RGBA(0, 222, 242, 0.6)' },
+                { offset: 1, color: 'RGBA(0, 222, 242, 0)' }
+            ])
+        },
+        data: []
+    }]
+};
+
+function showInfobox() {
+    document.getElementById('infobox').classList.add('show');
+    document.getElementById('chart').style.visibility = 'hidden';
+    setTimeout(function() {
+        ensureMChart().resize();
+    }, 120);
+}
+function hideInfobox() {
+    document.getElementById('infobox').classList.remove('show');
+    document.getElementById('chart').style.visibility = 'visible';
+    clearCableHighlight();
+    myChart.resize();
+}
+
+myChart.on('click', function(params) {
+    if (!params.name) return;
+    var sensorItem = findSensorByContent(params.name, currentSide);
+    if (!sensorItem) return;
+    highlightCable(sensorItem.id_sensor);
+    var infoID = setInfoQueryId(sensorItem);
+    showInfobox();
+    towerindex = currentSide === 'downstream' ? 2 : 1;
+    var apiUrl = currentSide === 'downstream'
+        ? "api/getcabledata3_" + params.name + ".json"
+        : "api/getcabledata2_" + params.name + ".json";
+    $.ajax({
+        type: 'GET',
+        url: apiUrl,
+        data: { id: params.name },
+        dataType: 'json',
+        success: function(data) {
+            var obj = parseApiData(data);
+            if (!obj) return;
+            infoID.innerHTML = '类型：拉索&nbsp;&nbsp;编号：' + params.name + '<br>当前值：' + obj.data[obj.data.length - 1] + 'kN';
+            applyInfoChart(obj);
+        }
+    });
+});
+
+document.getElementById('closeInfobox').addEventListener('click', hideInfobox);
+
+function getData(mode, btn) {
+    $.ajax({
+        type: 'GET',
+        url: "api/getdatasingle_" + document.getElementById('infoID').name + "_" + towerindex + "_" + mode + ".json",
+        data: {
+            mode: mode,
+            id: document.getElementById('infoID').name,
+            select: 0,
+            tower: towerindex
+        },
+        dataType: 'json',
+        success: function(data) {
+            document.querySelectorAll('[name="data2"]').forEach(function(b) {
+                b.style.backgroundColor = 'transparent';
+                b.classList.remove('active');
+            });
+            btn.style.backgroundColor = 'rgba(7,118,181,.5)';
+            btn.classList.add('active');
+            applyInfoChart(data);
+        }
+    });
+}
+document.getElementById('btn1').addEventListener('click', function() { getData(0, this); });
+document.getElementById('btn2').addEventListener('click', function() { getData(1, this); });
+document.getElementById('btn3').addEventListener('click', function() { getData(2, this); });
+document.getElementById('btn4').addEventListener('click', function() { getData(3, this); });
+
+window.addEventListener('resize', function() {
+    myChart.resize();
+    if (mChart && !mChart.isDisposed()) mChart.resize();
+    resizeScene();
+});
+
+// 调试按钮保留
+var myPos, myPos1, myPos2;
+document.getElementById('test').addEventListener('click', function() { myPos1 = myPos; });
+document.getElementById('test2').addEventListener('click', function() { myPos2 = myPos; });
+document.getElementById('test3').addEventListener('click', function() {
+    if (myPos1 && myPos2) scene.add(createCable(myPos1, myPos2));
+});
+document.getElementById('test4').addEventListener('click', function() {
+    cableList.forEach(function(c) { c.cableMaterial.emissive = new THREE.Color(0x66ccff); });
+});
+</script>
+</html>
